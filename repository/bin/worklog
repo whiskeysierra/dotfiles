@@ -62,7 +62,10 @@ def find_commits():
     for parent, directories, files in os.walk(args.directory):
         for directory in directories:
             if os.path.basename(directory) == '.git' and not parent.endswith('/target/checkout'):
-                output = git.standup(since=since, format='%at %s', _cwd=parent, _tty_out=False)
+                if since:
+                    output = git.standup(since=since, format='%at %s', _cwd=parent, _tty_out=False)
+                else:
+                    output = git.standup(format='%at %s', _cwd=parent, _tty_out=False)
                 lines = map(lambda c: c.strip('\r\n'), output)
 
                 if lines:
@@ -118,6 +121,9 @@ def write(printer):
 
     uptime_delta = relativedelta(seconds=int(uptime()))
     printer.write('Uptime: %s' % humanize(uptime_delta))
+
+    if not commits:
+        return
 
     table = PrettyTable(['Project', 'Supposed start', 'End', 'Duration', 'Message'])
     table.align = 'l'
