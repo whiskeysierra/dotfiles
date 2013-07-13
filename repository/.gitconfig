@@ -23,19 +23,10 @@
     feature  = checkout -b
     peeps    = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
 
-    # legit
-    switch = !legit switch \"$@\"
-    branches = !legit branches
-    sprout = !legit sprout \"$@\"
-    unpublish = !legit unpublish \"$@\"
-    harvest = !legit harvest \"$@\"
-    sync = !legit sync \"$@\"
-    publish = !legit publish \"$@\"
-    graft = !legit graft \"$@\"
-
     # additional aliases/commands in ~/bin/:
-    # done:
     # standup: show my last commits from the last workday
+    # sync: stash, pull and stash apply
+    # track: make the current branch track the remote with the same name (--set-upstream)
 [color]
     branch = auto
     diff = auto
