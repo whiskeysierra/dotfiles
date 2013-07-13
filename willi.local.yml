@@ -1,0 +1,7 @@
+# macbook specifics
+
+/opt/gradle-1.6: /opt/gradle
+/Library/Java/JavaVirtualMachines/jdk1.7.0_25.jdk/Contents/Home/: /opt/java
+/usr/local/texlive/2010/bin/universal-darwin: /opt/latex/bin
+/opt/apache-maven-3.0.5: /opt/maven
+/Library/Frameworks/Python.framework/Versions/2.7: /opt/python

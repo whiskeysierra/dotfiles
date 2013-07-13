@@ -1,0 +1,60 @@
+[user]
+    name = Willi Schönborn
+    email = w.schoenborn@gmail.com
+[core]
+    ignorecase = false
+[alias]
+    # common typos
+    staus    = status
+    stats    = status
+    stauts   = status
+    st       = status
+
+    # my aliases
+    amend    = commit --amend
+    delete   = !sh -c 'git branch -d $1 && git push origin :$1' -
+    filelog  = log --patch
+    ll       = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ls       = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    new      = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    tags     = for-each-ref --sort='*authordate' --format='%(refname:short)' refs/tags
+    tree     = log --graph --oneline --all
+    who      = shortlog --numbered --summary --email --no-merges
+    feature  = checkout -b
+    peeps    = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+
+    # legit
+    switch = !legit switch \"$@\"
+    branches = !legit branches
+    sprout = !legit sprout \"$@\"
+    unpublish = !legit unpublish \"$@\"
+    harvest = !legit harvest \"$@\"
+    sync = !legit sync \"$@\"
+    publish = !legit publish \"$@\"
+    graft = !legit graft \"$@\"
+
+    # additional aliases/commands in ~/bin/:
+    # done:
+    # standup: show my last commits from the last workday
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    grep = auto                                                                 
+[color "grep"]                                                                  
+    filename = magenta                                                          
+    match    = red bold                                                         
+    linenumber = green                                                          
+    separator  = cyan
+[branch]
+    autosetuprebase = always
+[branch "master"]
+    remote = origin
+    merge = refs/heads/master
+[merge]                                                                         
+    log = true                                                                  
+    summary = true
+[push]
+    default = current
+[remote "origin"]
+    push = HEAD

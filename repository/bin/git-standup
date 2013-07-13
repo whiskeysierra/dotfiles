@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+import argparse
+import sys
+
+from datetime import datetime
+from sh import git
+
+
+parser = argparse.ArgumentParser(
+    description='Produces a worklog .')
+
+if sys.stdout.isatty():
+    default_format = '%C(cyan)%ad %C(yellow)%h %C(reset)%s'
+else:
+    default_format = '%ad %h %s'
+
+parser.add_argument('--format', default=default_format, help='The git log format.')
+parser.add_argument('since', nargs='*', default=[], help='The beginning of this work period.')
+
+args = parser.parse_args()
+
+if args.since:
+    since = ' '.join(args.since)
+elif datetime.today().weekday() == 0:
+    since = 'last friday'
+else:
+    since = 'yesterday'
+
+global_author = git.config('--global', '--get', 'user.email').strip()
+project_author = git.config('--get', 'user.email').strip()
+
+if global_author == project_author:
+    authors = [global_author]
+else:
+    authors = [global_author, project_author]
+
+author = map(lambda a: '--author=' + a, authors)
+
+output = git.log(author, reverse=True, branches=True, since=since,
+                 format=args.format, date='local', _tty_out=sys.stdout.isatty())
+
+sys.stdout.write(str(output))

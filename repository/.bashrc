@@ -1,0 +1,132 @@
+#!/bin/sh
+
+# allow user scripts in ~/bin
+if [ -d ~/bin ]; then
+    export PATH=~/bin:$PATH
+fi
+
+# homebrew
+if [ -d /usr/local/bin ]; then
+    export PATH=/usr/local/bin:$PATH
+fi
+
+# python
+if [ -d /opt/python/bin ]; then
+    export PATH=/opt/python/bin:$PATH
+fi
+
+# latex
+if [ -d /opt/latex/bin ]; then
+    export PATH=/opt/latex/bin:$PATH
+fi
+
+# maven
+if [ -d /opt/maven/bin ]; then
+    export PATH=/opt/maven/bin:$PATH
+fi
+
+# ant
+if [ -d /opt/ant/bin ]; then
+    export PATH=/opt/ant/bin:$PATH
+fi
+
+# gradle
+if [ -d /opt/gradle/bin ]; then
+    export PATH=/opt/gradle/bin:$PATH
+fi
+
+# hadoop
+if [ -d /opt/hadoop/bin ]; then
+    export PATH=/opt/hadoop/bin:$PATH
+fi
+
+# hive
+if [ -d /opt/hive/bin ]; then
+    export PATH=/opt/hive/bin:$PATH
+fi
+
+# java
+if [ -d ~/.jenv ]; then
+    export PATH=~/.jenv/bin:~/.jenv/shims:$PATH
+    jenv rehash 2>/dev/null
+elif [ -d /opt/java ]; then
+    export JAVA_HOME=/opt/java
+    export PATH=${JAVA_HOME}/bin:$PATH
+fi
+
+# bash completion
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
+
+# bash completion shipped with homebrew
+if [ -f /usr/local/etc/bash_completion ]; then
+    source /usr/local/etc/bash_completion
+fi
+
+# homebrew's own bash completion
+command -v brew >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        source $(brew --prefix)/etc/bash_completion
+    fi
+fi
+
+# jenv bash completion
+if [ -f ~/.jenv/completions/jenv.bash ]; then
+    source ~/.jenv/completions/jenv.bash
+fi
+
+# make less more friendly for non-text input files, see lesspipe(1)
+if [ -x /usr/local/bin/lesspipe.sh ]; then
+    eval "$(lesspipe.sh)"
+fi
+
+###
+### Prompt
+###
+
+# git prompt
+if [ -f ~/.gitprompt ]; then
+    source ~/.gitprompt
+fi
+
+# colored prompt with git support
+export PS1='\[\033[01;30m\]\t \[\e[0;36m\]\u\[\e[m\]@\[\033[00;32m\]\h\[\033[00;37m\]:\[\033[31m\]$(__git_ps1 "(%s)\[\033[01m\]")\[\033[0;34m\]\w\[\033[00m\] $ ';
+
+# colored ls output
+export CLICOLOR=1
+#export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:';
+
+###
+### History
+###
+
+# save up to 30k commands in ~/.bash_history...
+export HISTFILESIZE=300000
+# and up to 10k in memory
+export HISTSIZE=100000
+
+# set vi as default editor
+export EDITOR=vi
+export VISUAL=vi
+
+# 2x Ctrl-D to close terminal
+export IGNOREEOF=1
+
+###
+### Keychain
+###
+
+keychain --quiet ~/.ssh/personal ~/.ssh/work ~/.ssh/mvn
+source ~/.keychain/$HOSTNAME-sh
+
+###
+### Aliases
+###
+
+# load external aliases
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+

@@ -1,0 +1,153 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from prettytable import PrettyTable
+from sh import git
+from uptime import uptime
+
+parser = argparse.ArgumentParser(
+    description='Generates a worklog.')
+
+parser.add_argument('--directory', dest='directory', default=os.path.expanduser('~/Projects'),
+                    help='The project directory containing the repositories.')
+parser.add_argument('--no-persist', dest='persist', action='store_false', default=True,
+                    help='Don\'t persist results to ~/Worklogs.')
+parser.add_argument('--output-directory', dest='output_directory', default=os.path.expanduser('~/Worklogs'),
+                    help='The worklog directory for persisted logs.')
+parser.add_argument('since', nargs='*', default=[],
+                    help='The beginning of this work period.')
+
+args = parser.parse_args()
+since = ' '.join(args.since)
+
+
+class Project(object):
+    def __init__(self, path):
+        self.path = path
+
+    @property
+    def name(self):
+        return os.path.basename(self.path)
+
+    def __str__(self):
+        return self.name
+
+
+class Commit(object):
+    def __init__(self):
+        self.project = None
+        self._timestamp = None
+        self.message = None
+        self.delta = None
+
+    @property
+    def timestamp(self):
+        return self._timestamp
+
+    @timestamp.setter
+    def timestamp(self, value):
+        self._timestamp = datetime.fromtimestamp(long(value))
+
+    def __str__(self):
+        return self.message
+
+
+def find_commits():
+    commits = []
+
+    for parent, directories, files in os.walk(args.directory):
+        for directory in directories:
+            if os.path.basename(directory) == '.git' and not parent.endswith('/target/checkout'):
+                output = git.standup(since=since, format='%at %s', _cwd=parent, _tty_out=False)
+                lines = map(lambda c: c.strip('\r\n'), output)
+
+                if lines:
+                    project = Project(parent)
+
+                    for line in lines:
+                        timestamp, message = line.split(' ', 1)
+                        commit = Commit()
+                        commit.project = project
+                        commit.timestamp = timestamp
+                        commit.message = message
+
+                        commits.append(commit)
+
+    return commits
+
+
+class Printer(object):
+    def write(self, message=''):
+        print message
+
+
+class PersistentPrinter(Printer):
+    def __init__(self, log):
+        self.log = log
+
+    def write(self, message=''):
+        super(PersistentPrinter, self).write(message)
+        self.log.write(str(message))
+        self.log.write('\n')
+
+
+def humanize(delta):
+    if delta is None:
+        return 'Unknown'
+
+    units = ['years', 'months', 'days', 'hours', 'minutes']
+    parts = []
+
+    display = lambda value, unit: unit[:-1] if value == 1 else unit
+
+    for unit in units:
+        value = getattr(delta, unit)
+        if value:
+            parts.append('%s %s' % (value, display(value, unit)))
+
+    return ', '.join(parts) if parts else 'Less than a minute'
+
+
+def write(printer):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    printer.write('Date: %s' % now)
+
+    uptime_delta = relativedelta(seconds=int(uptime()))
+    printer.write('Uptime: %s' % humanize(uptime_delta))
+
+    table = PrettyTable(['Project', 'Supposed start', 'End', 'Duration', 'Message'])
+    table.align = 'l'
+
+    for duration, commit in [(humanize(c.delta), c) for c in commits]:
+        if commit.delta:
+            start = commit.timestamp - commit.delta
+        else:
+            start = 'Unknown'
+        end = commit.timestamp
+        table.add_row([commit.project, start, end, duration, commit.message])
+
+    printer.write(table)
+
+
+commits = find_commits()
+commits = sorted(commits, key=lambda c: c.timestamp)
+
+for index, commit in enumerate(commits):
+    start = commits[index - 1].timestamp
+    end = commit.timestamp
+    if start < end:
+        commit.delta = relativedelta(end, start)
+
+if args.persist:
+    name = datetime.now().strftime('%Y%m%d%H%M%S') + '.log'
+    path = os.path.join(args.output_directory, name)
+    with open(path, 'w') as f:
+        write(PersistentPrinter(f))
+    print "Written to " + path
+else:
+    write(Printer())
+

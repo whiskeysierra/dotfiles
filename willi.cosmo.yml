@@ -1,0 +1,6 @@
+# work specifics
+
+.m2/settings.xml: ~/.m2/settings.xml
+/opt/gradle-1.6: /opt/gradle
+# old maven is required :(
+/opt/apache-maven-3.0.3: /opt/maven

@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+
+import os.path
+import argparse
+import errno
+import platform
+import yaml
+
+directory = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
+parser = argparse.ArgumentParser(
+    description='Sets up the local environment by creating symlinks for local files from the Dropbox directory.')
+
+parser.add_argument('--no-backup', dest='backup', action='store_false', default=True,
+                    help='Don\'t backup existing target files.')
+parser.add_argument('--force', dest='force', action='store_true', default=False,
+                    help='Overwrite existing symlinks or files.')
+parser.add_argument('--dry', dest='dry', action='store_true', default=False,
+                    help='Run without changing files.')
+
+args = parser.parse_args()
+
+global_config = directory + '/config.yml'
+print "Loading global config %s" % global_config
+with open(global_config) as f:
+    config = yaml.safe_load(f)
+
+host_config = directory + '/' + platform.node() + '.yml'
+if os.path.exists(host_config):
+    print "Loading host config %s" % host_config
+    with open(host_config) as f:
+        config.update(yaml.safe_load(f))
+
+
+class color:
+    end = '\033[0m'
+
+    @staticmethod
+    def purple(s):
+        return '\033[95m' + s + color.end
+
+    @staticmethod
+    def blue(s):
+        return '\033[94m' + s + color.end
+
+    @staticmethod
+    def green(s):
+        return '\033[92m' + s + color.end
+
+    @staticmethod
+    def yellow(s):
+        return '\033[93m' + s + color.end
+
+    @staticmethod
+    def red(s):
+        return '\033[91m' + s + color.end
+
+
+def move(source, target):
+    if not args.dry:
+        os.rename(source, target)
+
+
+def delete(f):
+    if not args.dry:
+        os.unlink(f)
+
+
+def link(source, target):
+    if not args.dry:
+        os.symlink(source, target)
+
+
+for source, target in config.iteritems():
+    if os.path.isabs(source):
+        real_source = source
+    else:
+        real_source = directory + '/repository/' + source
+    real_target = os.path.expanduser(target)
+
+    if not os.path.exists(real_source):
+        raise ValueError('No such file or directory. %s' % real_source)
+
+    print target,
+    states = []
+
+    if os.path.islink(real_target):
+        delete(real_target)
+        states.append(color.red('updated'))
+    elif os.path.exists(real_target):
+        if args.backup:
+            backup = real_target + '.bak'
+            move(real_target, backup)
+            states.append(color.purple('backup'))
+            pass
+        elif args.force:
+            delete(real_target)
+            states.append(color.red('overwritten'))
+            pass
+        else:
+            print '[' + color.red('skipped') + ']'
+            continue
+
+    target_directory = os.path.dirname(real_target)
+
+    if not os.path.exists(target_directory):
+        try:
+            os.makedirs(target_directory)
+        except OSError as e:
+            if e.errno == errno.EEXIST and os.path.isdir(target_directory):
+                pass
+            else:
+                raise
+
+    link(real_source, real_target)
+    states.append(color.green('linked'))
+
+    print '[' + ', '.join(states) + ']'

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# word jumping (https://code.google.com/p/iterm2/wiki/Keybindings)
+# Alt + Left/Right
+# TODO fix backword-word on mac
+"\e[1;9D": backword-word
+"\e[1;9C": forward-word
+
+# Ctrl + L clears the terminal
+C-L: clear-screen
+
+# ignore case when tab complete
+set completion-ignore-case on
+
+# add trailing slash to symlinked directories
+set mark-symlinked-directories on

@@ -1,0 +1,11 @@
+/.idea
+/*.iml
+
+/repository/.gnupg/*.gpg
+/repository/.gnupg/*.gpg~
+/repository/.gnupg/random_seed
+
+/repository/.ssh/work
+/repository/.ssh/personal
+/repository/.ssh/mvn
+
