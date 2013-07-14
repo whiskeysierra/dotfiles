@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# word jumping (https://code.google.com/p/iterm2/wiki/Keybindings)
-# Alt + Left/Right
-# TODO fix backword-word on mac
-"\e[1;9D": backword-word
-"\e[1;9C": forward-word
+# word jumping
+# http://superuser.com/questions/205470/why-is-ctrl-arrow-not-working-in-bash-on-os-x
+# http://www.michael-noll.com/blog/2007/01/04/word-movement-shortcuts-for-iterm-on-mac-os-x/
+"\e[5C": forward-word
+"\e[5D": backward-word
 
 # Ctrl + L clears the terminal
 C-L: clear-screen
