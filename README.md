@@ -1,4 +1,4 @@
-# ![Slashdot icon](https://raw.github.com/whiskeysierra/dotfiles/master/icon.png) dotfiles Management [![Build Status](https://travis-ci.org/whiskeysierra/dotfiles.png?branch=master)](http://travis-ci.org/whiskeysierra/dotfiles)
+# ![Slashdot icon](https://raw.github.com/whiskeysierra/dotfiles/master/icon.png) whiskeysierra's dotfiles [![Build Status](https://travis-ci.org/whiskeysierra/dotfiles.png?branch=master)](http://travis-ci.org/whiskeysierra/dotfiles)
 
 Dotfile and environment management for unix-based systems.
 
