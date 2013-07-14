@@ -1,0 +1,7 @@
+PyYAML
+argparse
+clint
+prettytable
+python-dateutil
+sh
+uptime

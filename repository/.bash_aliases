@@ -139,15 +139,17 @@ if [ ${uuid} -ne 0 -a ${uuidgen} -eq 0 ]; then
 fi
 
 # environment setup shortcut, to quickly link to new scripts
-alias env-setup='~/Dropbox/Environment/bin/setup'
+alias env-setup='~/.dotfiles/manage'
 
 ###
 ### Projects
 ###
 
+# private
 alias flux='cd ~/Projects/flux'
-alias yc='cd ~/Projects/yourchance/application'
-alias ks='cd ~/Projects/kraftspende'
+alias dotfiles='cd ~/.dotfiles'
+
+# work
 alias tlf='cd ~/Projects/TheLabelFinder'
 alias pa='cd ~/Projects/TheLabelFinder/professional-area'
 alias ua='cd ~/Projects/TheLabelFinder/user-area'
