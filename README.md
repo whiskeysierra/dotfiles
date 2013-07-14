@@ -1,4 +1,4 @@
-# ![Flux Capacitor](https://cdn1.iconfinder.com/data/icons/WPZOOM_Social_Networking_Icon_Set/64/slashdot.png) dotfiles
+# ![Slashdot icon](https://cdn1.iconfinder.com/data/icons/WPZOOM_Social_Networking_Icon_Set/64/slashdot.png) dotfiles
 Dotfile and environment management for unix-based systems.
 
 
