@@ -10,6 +10,16 @@ if [ -d /usr/local/bin ]; then
     export PATH=/usr/local/bin:$PATH
 fi
 
+# nodejs
+if [ -e /usr/local/lib/node ]; then
+    export NODE_PATH=/usr/local/lib/node
+fi
+
+# npm
+if [ -d /usr/local/share/npm/bin ]; then
+    export PATH=/usr/local/share/npm/bin:$PATH
+fi
+
 # python
 if [ -d /opt/python/bin ]; then
     export PATH=/opt/python/bin:$PATH
