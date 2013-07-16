@@ -1,7 +1,9 @@
 PyYAML
+argcomplete
 argparse
 clint
 prettytable
 python-dateutil
+requests
 sh
 uptime

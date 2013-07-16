@@ -1,0 +1,6 @@
+### gcov ###
+# gcc coverage testing tool files
+
+*.gcno
+*.gcda
+*.gcov

@@ -3,6 +3,7 @@ bin: ~/bin
 .bash_profile: ~/.bash_profile
 .bashrc: ~/.bashrc
 .gitconfig: ~/.gitconfig
+.gitignore: ~/.gitignore
 .gitprompt: ~/.gitprompt
 .gnupg: ~/.gnupg
 .gradle/gradle.properties: ~/.gradle/gradle.properties

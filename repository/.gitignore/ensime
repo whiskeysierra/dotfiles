@@ -1,0 +1,4 @@
+### Ensime ###
+# Ensime specific
+.ensime
+.ensime_lucene/

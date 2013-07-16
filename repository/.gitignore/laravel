@@ -1,0 +1,4 @@
+### Laravel ###
+/vendor
+composer.phar
+composer.lock
