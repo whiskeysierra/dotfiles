@@ -149,7 +149,7 @@ for index, commit in enumerate(commits):
         commit.delta = relativedelta(end, start)
 
 if args.persist:
-    name = datetime.now().strftime('%Y%m%d%H%M%S') + '.log'
+    name = datetime.now().strftime('%Y-%m-%d-%H%M%S') + '.log'
     path = os.path.join(args.output_directory, name)
     with open(path, 'w') as f:
         write(PersistentPrinter(f))
