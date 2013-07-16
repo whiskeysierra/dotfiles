@@ -2,6 +2,7 @@ bin: ~/bin
 .bash_aliases: ~/.bash_aliases
 .bash_profile: ~/.bash_profile
 .bashrc: ~/.bashrc
+.git-flow-completion: ~/.git-flow-completion
 .gitconfig: ~/.gitconfig
 .gitignore: ~/.gitignore
 .gitprompt: ~/.gitprompt

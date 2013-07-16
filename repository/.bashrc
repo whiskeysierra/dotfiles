@@ -82,6 +82,11 @@ if [ $? -eq 0 ]; then
     fi
 fi
 
+# git flow bash completion
+if [ -f ~/.git-flow-completion/git-flow-completion.bash ]; then
+    source ~/.git-flow-completion/git-flow-completion.bash
+fi
+
 # jenv bash completion
 if [ -f ~/.jenv/completions/jenv.bash ]; then
     source ~/.jenv/completions/jenv.bash
