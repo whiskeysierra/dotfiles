@@ -114,6 +114,9 @@ ip() {
     curl --silent 'http://checkip.dyndns.org' | xpath -e '/html/body/text()' 2>/dev/null | awk '{print $4}'
 }
 
+alias pin='sudo pip install --requirement=requirements.txt'
+alias pup='sudo pip install --upgrade --requirement=requirements.txt'
+
 xalias gradle='gradle --daemon --parallel --no-search-upward'
 
 alias composer='php composer.phar'
