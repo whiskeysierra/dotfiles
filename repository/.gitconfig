@@ -24,7 +24,6 @@
     tags     = !git tag | sort -V
     tree     = log --graph --oneline --all
     who      = shortlog --numbered --summary --email --no-merges
-    feature  = checkout -b
     peeps    = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
     install-dispatcher = subtree add -P git-hooks-dispatcher git@github.com:whiskeysierra/git-hooks-dispatcher.git master
     update-dispatcher = subtree pull -P git-hooks-dispatcher git@github.com:whiskeysierra/git-hooks-dispatcher.git master
