@@ -64,7 +64,7 @@ def print_tags(args):
 def write_tags(args):
     puts("Writing... ", newline=False)
 
-    gitignore = os.path.join(directory, '.gitignore')
+    gitignore = os.path.join(os.getcwd(), '.gitignore')
 
     if not args.overwrite and os.path.exists(gitignore):
         print colored.yellow('exists')
