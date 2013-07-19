@@ -1,8 +1,0 @@
-### CodeIgniter ###
-*/config/development
-*/logs/log-*.php
-!*/logs/.htaccess
-!*/logs/index.html
-*/cache/*
-!*/cache/.htaccess
-!*/cache/index.html

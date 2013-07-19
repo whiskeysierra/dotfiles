@@ -4,7 +4,6 @@ bin: ~/bin
 .bashrc: ~/.bashrc
 .git-flow-completion: ~/.git-flow-completion
 .gitconfig: ~/.gitconfig
-.gitignore: ~/.gitignore
 .gitprompt: ~/.gitprompt
 .gnupg: ~/.gnupg
 .gradle/gradle.properties: ~/.gradle/gradle.properties
