@@ -21,12 +21,10 @@
     ll       = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls       = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
     new      = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    peeps    = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
     tags     = !git tag | sort -V
     tree     = log --graph --oneline --all
     who      = shortlog --numbered --summary --email --no-merges
-    peeps    = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
-    install-dispatcher = subtree add -P git-hooks-dispatcher git@github.com:whiskeysierra/git-hooks-dispatcher.git master
-    update-dispatcher = subtree pull -P git-hooks-dispatcher git@github.com:whiskeysierra/git-hooks-dispatcher.git master
 
     # additional aliases/commands in ~/bin/:
     # standup: show my last commits from the last workday
