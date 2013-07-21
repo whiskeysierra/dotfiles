@@ -82,9 +82,19 @@ if [ $? -eq 0 ]; then
     fi
 fi
 
+# git dispatcher bash completion
+if [ -f ~/.git-dispatcher/git-dispatcher.completion.bash ]; then
+    source ~/.git-dispatcher/git-dispatcher-completion.bash
+fi
+
 # git flow bash completion
 if [ -f ~/.git-flow-completion/git-flow-completion.bash ]; then
     source ~/.git-flow-completion/git-flow-completion.bash
+fi
+
+# git ignore bash completion
+if [ -f ~/.git-ignore/git-ignore-completion.bash ]; then
+    source ~/.git-ignore/git-ignore-completion.bash
 fi
 
 # jenv bash completion
