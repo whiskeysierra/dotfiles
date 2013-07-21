@@ -5,27 +5,29 @@
     ignorecase = false
 [alias]
     # common typos
-    staus    = status
-    stats    = status
-    stauts   = status
-    st       = status
+    staus      = status
+    stats      = status
+    stauts     = status
+    st         = status
 
     # my aliases
-    amend    = commit --amend
-    delete   = !sh -c 'git branch -d $1 && git push origin :$1' -
-    dlc      = diff --cached HEAD^
-    filelog  = log --patch
-    find     = !git ls-files | grep -i
-    grep     = grep -Ii
-    last     = !git ll -1
-    ll       = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    ls       = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-    new      = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-    peeps    = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
-    push-all = !git push --all && git push --tags
-    tags     = !git tag | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n 
-    tree     = log --graph --oneline --all
-    who      = shortlog --numbered --summary --email --no-merges
+    amend      = commit --amend
+    delete     = !sh -c 'git branch -d $1 && git push origin :$1' -
+    dispatcher = !~/.git-dispatcher/git-dispatcher.py
+    dlc        = diff --cached HEAD^
+    filelog    = log --patch
+    find       = !git ls-files | grep -i
+    grep       = grep -Ii
+    ignore     = !~/.git-ignore/git-ignore.py
+    last       = !git ll -1
+    ll         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ls         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    new        = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    peeps      = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+    push-all   = !git push --all && git push --tags
+    tags       = !git tag | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n 
+    tree       = log --graph --oneline --all
+    who        = shortlog --numbered --summary --email --no-merges
 
     # additional aliases/commands in ~/bin/:
     # standup: show my last commits from the last workday
