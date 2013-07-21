@@ -83,7 +83,7 @@ if [ $? -eq 0 ]; then
 fi
 
 # git dispatcher bash completion
-if [ -f ~/.git-dispatcher/git-dispatcher.completion.bash ]; then
+if [ -f ~/.git-dispatcher/git-dispatcher-completion.bash ]; then
     source ~/.git-dispatcher/git-dispatcher-completion.bash
 fi
 
