@@ -64,7 +64,7 @@ xalias json='python -mjson.tool'
 alias cd..='cd ..'
 
 # good recipe for a solid maven release
-xalias release='mvn clean release:clean test release:prepare release:perform'
+xalias release='mvn clean release:clean release:prepare test release:perform'
 
 # jenv
 jenv() {
