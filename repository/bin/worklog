@@ -145,7 +145,7 @@ commits = sorted(commits, key=lambda c: c.timestamp)
 for index, commit in enumerate(commits):
     start = commits[index - 1].timestamp
     end = commit.timestamp
-    if start < end:
+    if start <= end:
         commit.delta = relativedelta(end, start)
 
 if args.persist:
