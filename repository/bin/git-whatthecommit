@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+template=/tmp/$(env LC_CTYPE=C tr -cd 'a-f0-9' < /dev/urandom | head -c 32)
+curl --silent 'http://whatthecommit.com' | xpath -e '/html/body/div[@id="content"]/*[1]/text()' 2>/dev/null | tr -d '\n' | sed -E 's/$/\n/' > ${template}
+git commit --template=${template}
