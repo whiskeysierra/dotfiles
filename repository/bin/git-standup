@@ -37,7 +37,7 @@ else:
 
 author = map(lambda a: '--author=' + a, authors)
 
-output = git.log(author, reverse=True, branches=True, since=since,
+output = git.log(author, all=True, reverse=True, branches=True, since=since,
                  format=args.format, date='local', _tty_out=sys.stdout.isatty())
 
 sys.stdout.write(str(output))
