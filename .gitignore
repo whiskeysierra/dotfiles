@@ -6,4 +6,5 @@
 /repository/.gnupg/random_seed
 
 /repository/.ssh/id_*
+/repository/.ssh/known_hosts
 
