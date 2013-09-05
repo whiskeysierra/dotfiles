@@ -1,0 +1,5 @@
+#!/bin/sh
+
+git config --global user.name "Willi Schönborn"
+git config --global user.email "w.schoenborn@gmail.com"
+

@@ -169,3 +169,8 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
+# load special bashrc additions
+if [ -f ~/.bash_include ]; then
+    source ~/.bash_include
+fi
+
