@@ -45,6 +45,16 @@ if [ -d /opt/gradle/bin ]; then
     export PATH=/opt/gradle/bin:$PATH
 fi
 
+# jalopy
+if  [ -d /opt/jalopy/bin ]; then
+    export PATH=/opt/jalopy/bin:$PATH
+fi
+
+# codevalidator
+if [ -d /opt/codevalidator ]; then
+    export PATH=/opt/codevalidator:$PATH
+fi
+
 # hadoop
 if [ -d /opt/hadoop/bin ]; then
     export PATH=/opt/hadoop/bin:$PATH
@@ -136,6 +146,10 @@ export HISTSIZE=100000
 export EDITOR=vi
 export VISUAL=vi
 
+# Maven options
+# TODO only at work
+export MAVEN_OPTS="-Xms4g -Xmx4g -XX:PermSize=512m -XX:MaxPermSize=2g"
+
 # 2x Ctrl-D to close terminal
 export IGNOREEOF=1
 
@@ -143,7 +157,7 @@ export IGNOREEOF=1
 ### Keychain
 ###
 
-keychain --quiet ~/.ssh/personal ~/.ssh/work ~/.ssh/mvn
+keychain --quiet ~/.ssh/id_personal ~/.ssh/id_work
 source ~/.keychain/$HOSTNAME-sh
 
 ###
