@@ -146,10 +146,6 @@ export HISTSIZE=100000
 export EDITOR=vi
 export VISUAL=vi
 
-# Maven options
-# TODO only at work
-export MAVEN_OPTS="-Xms4g -Xmx4g -XX:PermSize=512m -XX:MaxPermSize=2g"
-
 # 2x Ctrl-D to close terminal
 export IGNOREEOF=1
 
