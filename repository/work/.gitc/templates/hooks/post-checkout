@@ -3,5 +3,8 @@
 if [ $1 = 0000000000000000000000000000000000000000 ]; then
     git config user.name "Willi Schönborn"
     git config user.email "willi.schoenborn@zalando.de"
+
+    # remove after we are done
+    rm -f $0
 fi
 
