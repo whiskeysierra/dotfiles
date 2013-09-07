@@ -1,5 +1,7 @@
 [core]
     ignorecase = false
+[init]
+    templatedir = ~/.gitc/templates
 [alias]
     # common typos
     staus      = status

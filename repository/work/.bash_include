@@ -1,8 +1,4 @@
 #!/bin/sh
 
-# Maven options
 export MAVEN_OPTS="-Xms4g -Xmx4g -XX:PermSize=512m -XX:MaxPermSize=2g"
-
-git config --global user.name "Willi Schönborn"
-git config --global user.email "willi.schoenborn@zalando.de"
 

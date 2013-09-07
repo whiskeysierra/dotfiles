@@ -1,6 +1,7 @@
-# macbook specifics
+# personal specifics
 
 personal/.bash_include: ~/.bash_include
+personal/.gitc: ~/.gitc
 /opt/gradle-1.6: /opt/gradle
 /usr/local/texlive/2010/bin/universal-darwin: /opt/latex/bin
 /opt/apache-maven-3.0.5: /opt/maven

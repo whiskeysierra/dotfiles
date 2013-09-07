@@ -1,6 +1,7 @@
-# macbook specifics
+# work specifics
 
 work/.bash_include: ~/.bash_include
+work/.gitc: ~/.gitc
 work/.m2/settings.xml: ~/.m2/settings.xml
 /opt/gradle-1.7: /opt/gradle
 /opt/apache-maven-3.0.5: /opt/maven
