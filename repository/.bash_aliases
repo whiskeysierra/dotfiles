@@ -53,6 +53,7 @@ alias bf='find . -type f -exec ls -s {} \; | sort -n -r | head -5'
 alias grep='grep --extended-regexp --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias rgrep='grep --recursive --exclude-dir=.svn'
 
 # shows also alternatives and aliases, in contrast to which
 alias what='type -all'
