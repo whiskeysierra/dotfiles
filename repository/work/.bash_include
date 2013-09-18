@@ -2,5 +2,5 @@
 
 export MAVEN_OPTS="-Xms4g -Xmx4g -XX:PermSize=512m -XX:MaxPermSize=2g"
 
-source ~/.svn-completion.sh
+source ~/.svn-completion.bash
 

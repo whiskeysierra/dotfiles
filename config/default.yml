@@ -10,5 +10,6 @@ bin: ~/bin
 .gnupg: ~/.gnupg
 .gradle/gradle.properties: ~/.gradle/gradle.properties
 .inputrc: ~/.inputrc
+.mvn-completion.bash: ~/.mvn-completion.bash
 .ssh: ~/.ssh
 .vimrc: ~/.vimrc

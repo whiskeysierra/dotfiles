@@ -112,6 +112,11 @@ if [ -f ~/.jenv/completions/jenv.bash ]; then
     source ~/.jenv/completions/jenv.bash
 fi
 
+# maven bash completion
+if [ -f ~/.mvn-completion.bash ]; then
+    source ~/.mvn-completion.bash
+fi
+
 # make less more friendly for non-text input files, see lesspipe(1)
 if [ -x /usr/local/bin/lesspipe.sh ]; then
     eval "$(lesspipe.sh)"
