@@ -154,7 +154,5 @@ alias flux='cd ~/Projects/flux'
 alias dotfiles='cd ~/.dotfiles'
 
 # work
-alias tlf='cd ~/Projects/TheLabelFinder'
-alias pa='cd ~/Projects/TheLabelFinder/professional-area'
-alias ua='cd ~/Projects/TheLabelFinder/user-area'
-alias ub='cd ~/Projects/TheLabelFinder/user-area/src/main/php/user-beta/'
+alias 'postgres-start'='VBoxManage startvm PostgresDB\ 20130705 -type headless'
+alias 'postgres-stop'='VBoxManage controlvm PostgresDB\ 20130705 acpipowerbutton'
