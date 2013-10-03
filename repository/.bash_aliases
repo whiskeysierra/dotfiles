@@ -118,7 +118,7 @@ ip() {
 alias pin='sudo pip install --requirement=requirements.txt'
 alias pup='sudo pip install --upgrade --requirement=requirements.txt'
 
-xalias gradle='gradle --daemon --parallel --no-search-upward'
+xalias gradle='gradle --parallel --no-search-upward'
 
 alias composer='php composer.phar'
 alias cup='php composer.phar update'
