@@ -151,8 +151,12 @@ alias env-setup='~/.dotfiles/manage'
 
 # private
 alias flux='cd ~/Projects/flux'
+alias primal='cd ~/Projects/primal'
+alias hammock='cd ~/Projects/hammock'
 alias dotfiles='cd ~/.dotfiles'
 
 # work
-alias 'postgres-start'='VBoxManage startvm PostgresDB\ 20130705 -type headless'
-alias 'postgres-stop'='VBoxManage controlvm PostgresDB\ 20130705 acpipowerbutton'
+alias integration-test='mvn clean verify -Pintegration-test'
+alias logs='ssh logaccess.zalando'
+alias postgres-start='VBoxManage startvm PostgresDB\ 20130705 -type headless'
+alias postgres-stop='VBoxManage controlvm PostgresDB\ 20130705 acpipowerbutton'
