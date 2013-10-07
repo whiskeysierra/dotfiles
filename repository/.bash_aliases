@@ -123,12 +123,6 @@ alias pup='sudo pip install --upgrade --requirement=requirements.txt'
 
 xalias gradle='gradle --parallel --no-search-upward'
 
-alias composer='php composer.phar'
-alias cup='php composer.phar update'
-
-alias phpunit='phpunit --stderr'
-alias mysql='mysql --default-character-set=utf8'
-
 alias gpg='gpg --charset utf8'
 
 alias up='uptime'
