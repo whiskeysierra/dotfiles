@@ -64,8 +64,10 @@ xalias json='python -mjson.tool'
 # common typo :S
 alias cd..='cd ..'
 
-# good recipe for a solid maven release
-xalias release='mvn clean release:clean release:prepare test release:perform'
+# maven
+alias maven-verify='mvn clean verify'
+alias maven-install='mvn clean install'
+alias maven-deploy='mvn clean deploy'
 
 # jenv
 jenv() {
@@ -143,7 +145,7 @@ fi
 alias env-setup='~/.dotfiles/manage'
 
 ###
-### Projects
+### Projects and other aliases
 ###
 
 # private
