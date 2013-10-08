@@ -64,11 +64,6 @@ xalias json='python -mjson.tool'
 # common typo :S
 alias cd..='cd ..'
 
-# maven
-alias maven-verify='mvn clean verify'
-alias maven-install='mvn clean install'
-alias maven-deploy='mvn clean deploy'
-
 # jenv
 jenv() {
     typeset command
