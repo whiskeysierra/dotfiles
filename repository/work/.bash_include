@@ -4,3 +4,7 @@ export MAVEN_OPTS="-Xms2g -Xmx2g -XX:PermSize=512m -XX:MaxPermSize=768m"
 
 source ~/.svn-completion.bash
 
+if [ -d ~/.zalando-db/bin ]; then
+    export PATH=~/.zalando-db/bin:$PATH
+fi
+
