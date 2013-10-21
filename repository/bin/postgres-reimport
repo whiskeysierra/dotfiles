@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+set -x
+
+name="PostgresDB 20130705"
+VBoxManage controlvm "${name}" poweroff 
+VBoxManage unregistervm "${name}" --delete 
+VBoxManage import ~/Downloads/PostgresDB-20130705.ova --options keepallmacs
+VBoxManage startvm "${name}" --type headless
