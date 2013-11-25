@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import datetime
+from datetime import date
+from prettytable import PrettyTable
+  
+def get_week_string(date):
+    return "{0:s}{1:02d}".format(date.strftime("R%y_00_"), date.isocalendar()[1])
+
+if __name__ == "__main__":
+
+    table = PrettyTable(['Name', 'Week'])
+    table.align = 'l'
+
+    temp_date = date.today()
+    table.add_row(['Release', get_week_string(temp_date)])
+
+    temp_date += datetime.timedelta(days=7)
+    table.add_row(['Quality Assurance', get_week_string(temp_date)])
+
+    temp_date += datetime.timedelta(days=7)
+    table.add_row(['Development', get_week_string(temp_date)])
+
+    temp_date += datetime.timedelta(days=7)
+    table.add_row(['Planning', get_week_string(temp_date)])
+
+    print(table)
