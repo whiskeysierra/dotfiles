@@ -154,7 +154,8 @@ alias hammock='cd ~/Projects/hammock'
 alias dotfiles='cd ~/.dotfiles'
 
 # work
-alias integration-test='mvn clean verify -Pintegration-test -DskipFullDatabase=true'
+alias integration-test='mvn clean verify -Pintegration-test -DskipFullDatabase=true -Dlogging.context.forceEnabled=false'
+alias integration-test-db='mvn clean verify -Pintegration-test -Dlogging.context.forceEnabled=false'
 alias logs='ssh logaccess.zalando'
 alias deployctl='ssh -A deployctl@deploy.zalando'
 alias postgres-start='VBoxManage startvm "PostgresDB 20130705" -type headless'
