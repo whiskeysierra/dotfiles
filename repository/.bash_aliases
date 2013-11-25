@@ -59,7 +59,11 @@ alias rgrep='grep --recursive --exclude-dir=.svn'
 alias what='type -all'
 
 # json pretty printing
-xalias json='python -mjson.tool'
+alias json='python -mjson.tool'
+
+#xml pretty printing
+alias xml='xmlstarlet fo'
+
 
 # common typo :S
 alias cd..='cd ..'
