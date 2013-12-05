@@ -122,7 +122,7 @@ ip() {
 alias pin='sudo pip install --requirement=requirements.txt'
 alias pup='sudo pip install --upgrade --requirement=requirements.txt'
 
-xalias gradle='gradle --parallel --no-search-upward'
+xalias gradle='gradle --parallel'
 
 alias gpg='gpg --charset utf8'
 

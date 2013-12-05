@@ -2,6 +2,7 @@
 
 personal/.bash_include: ~/.bash_include
 personal/.gitc: ~/.gitc
+personal/.m2/settings.xml: ~/.m2/settings.xml
 /opt/gradle-1.6: /opt/gradle
 /usr/local/texlive/2010/bin/universal-darwin: /opt/latex/bin
 /opt/apache-maven-3.0.5: /opt/maven
