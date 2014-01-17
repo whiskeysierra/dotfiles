@@ -1,0 +1,26 @@
+#!/bin/sh
+
+format="%(refname:short) %(upstream:short)"
+options=""
+
+for argument in $@; do
+    case "$argument" in
+        '--master')
+            format="%(refname:short) origin/master"
+            ;;
+        '--no-merges')
+            options="--no-merges"
+            ;;
+        *)
+            ;;
+    esac
+done
+
+git for-each-ref --format="$format" refs/heads | \
+while read local remote
+do
+    [ -z "$remote" ] && continue
+    BEHIND=$(git rev-list $options ${remote}..${local} --count)
+    AHEAD=$(git rev-list $options ${local}..${remote} --count)
+    echo "$local (behind $BEHIND) | (ahead $AHEAD) $remote"
+done
