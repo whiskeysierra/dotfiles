@@ -20,7 +20,7 @@ git for-each-ref --format="$format" refs/heads | \
 while read local remote
 do
     [ -z "$remote" ] && continue
-    BEHIND=$(git rev-list $options ${remote}..${local} --count)
-    AHEAD=$(git rev-list $options ${local}..${remote} --count)
-    echo "$local#(behind $BEHIND | ahead $AHEAD)#$remote"
+    BEHIND=$(git rev-list $options ${local}..${remote} --count)
+    AHEAD=$(git rev-list $options ${remote}..${local} --count)
+    echo "$local#(behind $BEHIND#ahead $AHEAD)#$remote"
 done | column -t -s '#'
