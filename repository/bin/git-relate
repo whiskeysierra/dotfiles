@@ -22,5 +22,5 @@ do
     [ -z "$remote" ] && continue
     BEHIND=$(git rev-list $options ${remote}..${local} --count)
     AHEAD=$(git rev-list $options ${local}..${remote} --count)
-    echo "$local (behind $BEHIND) | (ahead $AHEAD) $remote"
-done
+    echo "$local#(behind $BEHIND | ahead $AHEAD)#$remote"
+done | column -t -s '#'
