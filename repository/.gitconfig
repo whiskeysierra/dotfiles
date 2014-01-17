@@ -11,6 +11,7 @@
 
     # my aliases
     amend      = commit --amend
+    bs         = branch-status
     delete     = !sh -c 'git branch -d $1 && git push origin :$1' -
     dispatcher = !~/.git-dispatcher/git-dispatcher.py
     dlc        = diff --cached HEAD^
