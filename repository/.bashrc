@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # allow user scripts in ~/bin
 if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
