@@ -1,23 +1,32 @@
 #!/bin/sh
 
+base="refs/remotes"
 format="%(refname:short) origin/master"
 options="--no-merges"
+filter="grep -v origin/HEAD"
 
 for argument in $@; do
     case "$argument" in
-        '-t'|'--tracking')
+        '-l'|'--local')
+            base="refs/heads"
             format="%(refname:short) %(upstream:short)"
             ;;
         '-m'|'--merges')
             options=""
             ;;
+        '--head'|'--include-head')
+            filter="cat"
+            ;;
         *)
+            echo "Unknown option $argument" >&2
+            exit 1
             ;;
     esac
 done
 (
 echo Branch#Behind#Ahead#Relative to
-git for-each-ref --format="$format" refs/heads | \
+git for-each-ref --format="$format" $base | \
+$filter | \
 while read local remote
 do
     [ -z "$remote" ] && continue
