@@ -156,6 +156,7 @@ alias dotfiles='cd ~/.dotfiles'
 # work
 alias integration-test='mvn clean verify -Pintegration-test -DskipFullDatabase=true -Dlogging.context.forceEnabled=false'
 alias integration-test-db='mvn clean verify -Pintegration-test -Dlogging.context.forceEnabled=false'
+alias sup='svn up ~/Projects/{zalando,zeos}-*'
 alias logs='ssh logaccess.zalando'
 alias zlogs='ssh z-logaccess.zalando'
 alias deployctl='ssh -A deployctl@deploy.zalando'
