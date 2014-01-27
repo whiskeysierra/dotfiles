@@ -1,26 +1,27 @@
 #!/bin/sh
 
-format="%(refname:short) %(upstream:short)"
-options=""
+format="%(refname:short) origin/master"
+options="--no-merges"
 
 for argument in $@; do
     case "$argument" in
-        '--master')
-            format="%(refname:short) origin/master"
+        '-t'|'--tracking')
+            format="%(refname:short) %(upstream:short)"
             ;;
-        '--no-merges')
-            options="--no-merges"
+        '-m'|'--merges')
+            options=""
             ;;
         *)
             ;;
     esac
 done
-
+(
+echo Branch#Behind#Ahead#Relative to
 git for-each-ref --format="$format" refs/heads | \
 while read local remote
 do
     [ -z "$remote" ] && continue
     BEHIND=$(git rev-list $options ${local}..${remote} --count)
     AHEAD=$(git rev-list $options ${remote}..${local} --count)
-    echo "$local#(behind $BEHIND#ahead $AHEAD)#$remote"
-done | column -t -s '#'
+    echo "$local#-$BEHIND#+$AHEAD#$remote"
+done) | column -t -s '#'
