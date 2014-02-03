@@ -154,6 +154,8 @@ alias hammock='cd ~/Projects/hammock'
 alias dotfiles='cd ~/.dotfiles'
 
 # work
+alias zo='cd ~/Projects/zeos-order'
+alias order='cd ~/Projects/zeos-order'
 alias integration-test='mvn clean verify -Pintegration-test -DskipFullDatabase=true -Dlogging.context.forceEnabled=false'
 alias integration-test-db='mvn clean verify -Pintegration-test -Dlogging.context.forceEnabled=false'
 alias sup='svn up ~/Projects/{zalando,zeos}-*'
