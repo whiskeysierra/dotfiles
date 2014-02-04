@@ -1,5 +1,6 @@
 [core]
     ignorecase = false
+    pager = less -r
 [init]
     templatedir = ~/.gitc/templates
 [alias]
@@ -11,22 +12,14 @@
 
     # my aliases
     amend      = commit --amend
-    delete     = !sh -c 'git branch -d $1 && git push origin :$1' -
-    dispatcher = !~/.git-dispatcher/git-dispatcher.py
-    dlc        = diff --cached HEAD^
+    diff-words = diff --color-words
     filelog    = log --patch
     find       = !git ls-files | grep -i
-    grep       = grep -Ii
     graph      = log --oneline --abbrev-commit --all --graph --decorate --color
-    ignore     = !~/.git-ignore/git-ignore.py
     last       = !git ll -1
-    ll         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-    ls         = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-    new        = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-    push-all   = !git push --all && git push --tags
+    ll         = log --stat --abbrev-commit
     relate     = relate
     tags       = !git tag | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n 
-    tree       = log --graph --oneline --all
     who        = shortlog --numbered --summary --email --no-merges
     wtc        = whatthecommit
 
@@ -37,8 +30,10 @@
 [color]
     branch = auto
     diff = auto
-    status = auto
     grep = auto                                                                 
+    status = auto
+    ui = auto
+    interactive = auto
 [color "grep"]                                                                  
     filename = magenta                                                          
     match    = red bold                                                         
