@@ -74,6 +74,7 @@ def link(source, target):
 
 
 for source, target in config.iteritems():
+    source = os.path.expanduser(source)
     if os.path.isabs(source):
         real_source = source
     else:
