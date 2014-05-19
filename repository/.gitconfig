@@ -1,5 +1,6 @@
 [core]
     ignorecase = false
+    trustctime = false
     pager = less -r
 [init]
     templatedir = ~/.gitc/templates
