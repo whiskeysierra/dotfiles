@@ -160,6 +160,7 @@ alias jalopy='JAVA_HOME=/Users/wschoenborn/.jenv/versions/oracle64-1.7.0.25 jalo
 alias zo='cd ~/Projects/zeos-order'
 alias zf='cd ~/Projects/zeos-finance'
 alias oe='cd ~/Projects/zeos-orderengine'
+alias zc='cd ~/Projects/zalando-customer'
 alias integration-test='mvn clean verify -Pintegration-test -DskipFullDatabase=true -Dlogging.context.forceEnabled=false'
 alias integration-test-db='mvn clean verify -Pintegration-test -Dlogging.context.forceEnabled=false'
 alias logs='ssh logaccess.zalando'
