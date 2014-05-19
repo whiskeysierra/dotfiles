@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+ci-fake progress
+
+mvn clean verify -Pintegration-test
+
+if [ $? -eq 0 ]; then
+    ci-fake success
+else
+    ci-fake failure
+fi

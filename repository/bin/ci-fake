@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ $# -eq 1 ]; then
+   case "$1" in
+       'success')
+            message=successful
+            state=SUCCESSFUL
+       ;;
+       'progress')
+            message="in progress"
+            state=INPROGRESS
+       ;;
+       'failure')
+            message=failed
+            state=FAILED
+       ;;
+        *)
+            echo "Unknown option $1" >&2
+            exit 1
+            ;;
+    esac
+else
+    echo "Usage $0 <approve|reject>"
+    exit 1
+fi
+
+modules=$(cat ~/Projects/$(basename $(pwd)).ci-modules)
+author=$(git config --get user.name)
+username=$(git config --get zalando.username)
+password=$(git config --get zalando.password)
+host=$(hostname)
+now=$(date +%s)
+head=$(git rev-parse HEAD)
+short_head=$(git rev-parse --short HEAD)
+
+for module in $modules; do
+    echo "Marked $module @ $short_head as $message."
+
+    curl \
+        -u $username:$password \
+        --insecure \
+        --header "Accept: application/json" \
+        --header "Content-Type: application/json" \
+        --request POST \
+        --data '{"state":"'"$state"'","key":"'"$module"'-https:\\/\\/ci-dev.zalando.net\\/","name":"'"$module"'","url":"https://ci-dev.zalando.net/job/'"$module"'","description":"built by '"$author"' @ '"$host"'","dateAdded":'"$now"'}' \
+        https://stash.zalando.net/rest/build-status/1.0/commits/$head 
+done
