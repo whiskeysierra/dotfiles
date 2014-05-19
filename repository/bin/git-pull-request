@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ $# -ne 2 ]; then
+    echo "Usage $0 <pull-request-id> <local-branch-name>"
+    exit 1
+fi
+
+git fetch origin refs/pull-request/$2/from:$3
