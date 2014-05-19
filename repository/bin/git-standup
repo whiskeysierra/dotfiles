@@ -27,17 +27,9 @@ elif datetime.today().weekday() == 0:
 else:
     since = 'yesterday'
 
-global_author = git.config('--global', '--get', 'user.email').strip()
-project_author = git.config('--get', 'user.email').strip()
+author = git.config('--get', 'user.email').strip()
 
-if global_author == project_author:
-    authors = [global_author]
-else:
-    authors = [global_author, project_author]
-
-author = map(lambda a: '--author=' + a, authors)
-
-output = git.log(author, all=True, reverse=True, branches=True, since=since,
+output = git.log(author=author, all=True, reverse=True, branches=True, since=since,
                  format=args.format, date='local', _tty_out=sys.stdout.isatty())
 
 sys.stdout.write(str(output))
