@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export MAVEN_OPTS="-Xms2g -Xmx2g -XX:PermSize=512m -XX:MaxPermSize=768m"
+export MAVEN_OPTS="-Xms256m -Xmx2g"
 export DATABASE_USER="-U wschoenborn"
 
 source ~/.svn-completion.bash
