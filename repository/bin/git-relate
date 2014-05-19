@@ -2,8 +2,7 @@
 
 base="refs/remotes"
 format="%(refname:short) origin/master"
-options="--no-merges"
-filter="grep -v origin/HEAD"
+options=""
 
 for argument in $@; do
     case "$argument" in
@@ -11,11 +10,11 @@ for argument in $@; do
             base="refs/heads"
             format="%(refname:short) %(upstream:short)"
             ;;
-        '-m'|'--merges')
-            options=""
+        '-n'|'--no-merges')
+            options="$options --no-merges"
             ;;
-        '--head'|'--include-head')
-            filter="cat"
+         '-e'|'--no-empty')
+            options="$options --remove-empty"
             ;;
         *)
             echo "Unknown option $argument" >&2
@@ -23,10 +22,9 @@ for argument in $@; do
             ;;
     esac
 done
-(
-echo Branch#Behind#Ahead#Relative to
+(echo Branch#Behind#Ahead#Relative to
 git for-each-ref --sort="refname:short" --format="$format" $base | \
-$filter | \
+grep -v origin/HEAD | \
 while read local remote
 do
     [ -z "$remote" ] && continue
