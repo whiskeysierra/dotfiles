@@ -1,11 +1,28 @@
 #!/usr/bin/env bash
 
-ci-fake progress
+set -e
 
-mvn clean verify -Pintegration-test
+git fetch
 
-if [ $? -eq 0 ]; then
-    ci-fake success
+if [ $# -eq 1 ]; then
+    notify_commit=$(git rev-parse origin/pull-requests/$1/from)
+    build_branch=pull-requests/$1/merge
+    previous_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    function rollback() {
+        git checkout $previous_branch
+        git branch -D $build_branch
+    }
+
+    git checkout $build_branch
+    trap rollback EXIT INT TERM
 else
-    ci-fake failure
+    notify_commit=$(git rev-parse HEAD)
 fi
+
+ci-fake progress $notify_commit
+trap "ci-fake failure $notify_commit" 1 INT TERM
+ 
+mvn clean verify -P integration-test
+
+ci-fake success $notify_commit

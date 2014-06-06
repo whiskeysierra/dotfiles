@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+JAVA_HOME=/Users/wschoenborn/.jenv/versions/oracle64-1.7.0.25 jalopy.sh $(git diff --name-only --cached | grep -E '\.java$')

@@ -2,7 +2,7 @@
 
 set -e
 
-if [ $# -eq 1 ]; then
+if [ $# -eq 1 -o $# -eq 2 ]; then
    case "$1" in
        'success')
             message=successful
@@ -21,8 +21,13 @@ if [ $# -eq 1 ]; then
             exit 1
             ;;
     esac
+    if [ $# -eq 2 ]; then
+        commit=$2
+    else
+        commit=$(git rev-parse HEAD)
+    fi
 else
-    echo "Usage $0 <approve|reject>"
+    echo "Usage $0 <approve|reject> [commit]"
     exit 1
 fi
 
@@ -32,8 +37,7 @@ username=$(git config --get zalando.username)
 password=$(git config --get zalando.password)
 host=$(hostname)
 now=$(date +%s)
-head=$(git rev-parse HEAD)
-short_head=$(git rev-parse --short HEAD)
+short_head=$(git rev-parse --short $commit)
 
 for module in $modules; do
     echo "Marked $module @ $short_head as $message."
@@ -45,5 +49,5 @@ for module in $modules; do
         --header "Content-Type: application/json" \
         --request POST \
         --data '{"state":"'"$state"'","key":"'"$module"'-https:\\/\\/ci-dev.zalando.net\\/","name":"'"$module"'","url":"https://ci-dev.zalando.net/job/'"$module"'","description":"built by '"$author"' @ '"$host"'","dateAdded":'"$now"'}' \
-        https://stash.zalando.net/rest/build-status/1.0/commits/$head 
+        https://stash.zalando.net/rest/build-status/1.0/commits/$commit 
 done
