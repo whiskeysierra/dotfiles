@@ -20,9 +20,12 @@ else
     notify_commit=$(git rev-parse HEAD)
 fi
 
-ci-fake progress $notify_commit
-trap "ci-fake failure $notify_commit" 1 INT TERM
- 
-mvn clean verify -P integration-test
+function failure() {
+    ci-fake failure $notify_commit
+}
 
+ci-fake progress $notify_commit
+trap failure ERR
+mvn clean verify -P integration-test
 ci-fake success $notify_commit
+
