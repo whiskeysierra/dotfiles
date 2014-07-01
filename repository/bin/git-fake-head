@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+if [ $# -ne 1 ]; then
+    echo "usage: $0 <refspec>"
+    exit 1
+fi
+
+git push origin $1:refs/heads/$(git rev-parse --abbrev-ref HEAD)

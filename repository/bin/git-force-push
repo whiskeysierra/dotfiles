@@ -1,0 +1,11 @@
+#!/bin/sh
+
+git push origin :$(git rev-parse --abbrev-ref HEAD)
+
+set -e
+
+if [ $# -eq 1 ]; then
+    git fake-head $1
+fi
+
+git push -u
