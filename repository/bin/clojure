@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rlwrap java -jar /opt/clojure/clojure.jar
