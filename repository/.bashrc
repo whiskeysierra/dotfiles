@@ -38,6 +38,11 @@ if [ -d /opt/maven/bin ]; then
     export PATH=/opt/maven/bin:$PATH
 fi
 
+# leiningen
+if [ -d /opt/lein/bin ]; then
+    export PATH=/opt/lein/bin:$PATH
+fi
+
 # ant
 if [ -d /opt/ant/bin ]; then
     export PATH=/opt/ant/bin:$PATH
