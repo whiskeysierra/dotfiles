@@ -49,6 +49,9 @@
     default = simple
 [remote "origin"]
     push = HEAD
-    fetch = +refs/pull-requests/*:refs/remotes/origin/pull-requests/*
+    fetch = +refs/pull-requests/*/from:refs/remotes/origin/pull-request/source/*
+    fetch = +refs/pull-requests/*/merge:refs/remotes/origin/pull-request/merge/*
+    fetch = +refs/pull/*/head:refs/remotes/origin/pull-request/source/*
+    fetch = +refs/pull/*/merge:refs/remotes/origin/pull-request/merge/*
     fetch = +refs/heads/*:refs/remotes/origin/*
 
