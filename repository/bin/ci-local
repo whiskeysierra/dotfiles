@@ -4,7 +4,9 @@ set -e
 
 git fetch
 
-if [ $# -eq 1 ]; then
+build_command='mvn clean verify -P integration-test'
+
+if [ $# -ge 1 ]; then
     notify_commit=$(git rev-parse origin/pull-requests/$1/from)
     build_branch=pull-requests/$1/merge
     previous_branch=$(git rev-parse --abbrev-ref HEAD)
@@ -16,6 +18,11 @@ if [ $# -eq 1 ]; then
 
     git checkout $build_branch
     trap rollback EXIT INT TERM
+
+    if [ $# -ge 2 ]; then
+        shift
+        build_command=$@
+    fi
 else
     notify_commit=$(git rev-parse HEAD)
 fi
@@ -26,6 +33,6 @@ function failure() {
 
 ci-fake progress $notify_commit
 trap failure ERR
-mvn clean verify -P integration-test
+$build_command
 ci-fake success $notify_commit
 
