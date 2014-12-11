@@ -75,8 +75,8 @@ fi
 
 # java
 if [ -d ~/.jenv ]; then
-    export PATH=~/.jenv/bin:~/.jenv/shims:$PATH
-    jenv rehash 2>/dev/null
+    export PATH="$HOME/.jenv/bin:$PATH"
+    eval "$(jenv init -)"
 elif [ -d /opt/java ]; then
     export JAVA_HOME=/opt/java
     export PATH=${JAVA_HOME}/bin:$PATH
@@ -113,11 +113,6 @@ fi
 # git ignore bash completion
 if [ -f ~/.git-ignore/git-ignore-completion.bash ]; then
     source ~/.git-ignore/git-ignore-completion.bash
-fi
-
-# jenv bash completion
-if [ -f ~/.jenv/completions/jenv.bash ]; then
-    source ~/.jenv/completions/jenv.bash
 fi
 
 # maven bash completion
