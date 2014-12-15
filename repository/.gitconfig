@@ -2,6 +2,7 @@
     ignorecase = false
     trustctime = false
     pager = less -r
+    excludesfile = ~/.gitignore-global
 [init]
     templatedir = ~/.gitc/templates
 [alias]

@@ -35,7 +35,8 @@ fi
 
 # maven
 if [ -d /opt/maven/bin ]; then
-    export PATH=/opt/maven/bin:$PATH
+    export M2_HOME=/opt/maven
+    export PATH=$M2_HOME/bin:$PATH
 fi
 
 # leiningen

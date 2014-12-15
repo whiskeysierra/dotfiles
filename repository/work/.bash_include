@@ -5,7 +5,7 @@ export DATABASE_USER="-U wschoenborn"
 
 source ~/.svn-completion.bash
 
-if [ -d ~/.zalando-db/bin ]; then
-    export PATH=~/.zalando-db/bin:$PATH
+if [ -d ~/.zalando-db ]; then
+    export PATH=~/.zalando-db:$PATH
 fi
 

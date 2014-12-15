@@ -7,8 +7,8 @@ git fetch
 build_command='mvn clean verify -P integration-test'
 
 if [ $# -ge 1 ]; then
-    notify_commit=$(git rev-parse origin/pull-requests/source/$1)
-    build_branch=pull-requests/merge/$1
+    notify_commit=$(git rev-parse origin/pull-request/source/$1)
+    build_branch=pull-request/merge/$1
     previous_branch=$(git rev-parse --abbrev-ref HEAD)
 
     function rollback() {

@@ -13,3 +13,4 @@ bin: ~/bin
 .mvn-completion.bash: ~/.mvn-completion.bash
 .ssh: ~/.ssh
 .vimrc: ~/.vimrc
+.gitignore-global: ~/.gitignore-global
