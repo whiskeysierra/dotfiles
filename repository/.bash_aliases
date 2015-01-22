@@ -68,22 +68,6 @@ alias xml='xmlstarlet fo'
 # common typo :S
 alias cd..='cd ..'
 
-# jenv
-jenv() {
-    typeset command
-    command="$1"
-    if [ "$#" -gt 0 ]; then
-        shift
-    fi
-
-    case "$command" in
-    enable-plugin|rehash|shell|shell-options)
-        eval `jenv "sh-$command" "$@"`;;
-    *)
-        command jenv "$command" "$@";;
-    esac
-}
-
 # personal top ten commands
 topc() {
     history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v './' | column -c3 -s ' ' -t | sort -nr | nl |  head -n10
@@ -156,7 +140,6 @@ alias dotfiles='cd ~/.dotfiles'
 # work
 alias release='~/Projects/branch-creator/release.py'
 alias hooks='~/Projects/git-hooks-local/install-hooks.sh'
-alias jalopy='JAVA_HOME=/Users/wschoenborn/.jenv/versions/oracle64-1.7.0.25 jalopy.sh'
 alias zo='echo "This alias is DEPRECATED. Use '"'"'os'"'"' instead." && cd ~/Projects/zeos-order'
 alias os='cd ~/Projects/zeos-order'
 alias zoe='echo "This alias is DEPRECATED. Use '"'"'oe'"'"' instead." && cd ~/Projects/zeos-orderengine'
@@ -170,7 +153,8 @@ alias integration-test-db='mvn clean verify -Pintegration-test -Dlogging.context
 alias logs='ssh logaccess.zalando'
 alias zlogs='ssh z-logaccess.zalando'
 alias deployctl='ssh -A deployctl@deploy.zalando'
-alias postgres-start='VBoxManage startvm "$(cat ~/.postgres-name)" -type headless'
-alias postgres-stop='VBoxManage controlvm "$(cat ~/.postgres-name)" acpipowerbutton'
+alias postgres-start='cd ~/.zalando-db-box && vagrant up'
+alias postgres-stop='cd ~/.zalando-db-box && vagrant halt'
+alias postgres-restore='cd ~/.zalando-db-box && vagrant snapshot go clean'
 alias tomcat='mvn clean test-compile tomcat:run-war -D skipTests=true'
 alias refund='(oe; cd server; mvn clean verify -D test=RefundFeaturesIT)'

@@ -27,7 +27,7 @@ if [ $# -eq 1 -o $# -eq 2 ]; then
         commit=$(git rev-parse HEAD)
     fi
 else
-    echo "Usage $0 <approve|reject> [commit]"
+    echo "Usage $0 <success|progress|failure> [commit]"
     exit 1
 fi
 

@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-name=$(cat ~/.postgres-name)
-VBoxManage controlvm "${name}" poweroff 
-VBoxManage snapshot "${name}" restore initial
-VBoxManage modifyvm "${name}" --usb off
-VBoxManage startvm "${name}" --type headless
