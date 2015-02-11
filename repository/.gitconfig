@@ -56,3 +56,5 @@
     fetch = +refs/pull/*/merge:refs/remotes/origin/pull-request/merge/*
     fetch = +refs/heads/*:refs/remotes/origin/*
 
+[user]
+    name = Willi Schoenborn
