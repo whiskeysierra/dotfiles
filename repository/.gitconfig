@@ -57,4 +57,4 @@
     fetch = +refs/heads/*:refs/remotes/origin/*
 
 [user]
-    name = Willi Schoenborn
+    name = Willi Schönborn
