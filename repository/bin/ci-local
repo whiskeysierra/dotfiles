@@ -7,7 +7,7 @@ git fetch
 build_command='mvn clean verify -P integration-test'
 
 if [ $# -ge 1 ]; then
-    notify_commit=$(git rev-parse origin/pull-request/source/$1)
+    merge_commit=$(git rev-parse origin/pull-request/merge/$1)
     build_branch=pull-request/merge/$1
     previous_branch=$(git rev-parse --abbrev-ref HEAD)
 
@@ -24,15 +24,15 @@ if [ $# -ge 1 ]; then
         build_command=$@
     fi
 else
-    notify_commit=$(git rev-parse HEAD)
+    merge_commit=$(git rev-parse HEAD)
 fi
 
 function failure() {
-    ci-fake failure $notify_commit
+    ci-fake failure $merge_commit
 }
 
-ci-fake progress $notify_commit
+ci-fake progress $merge_commit
 trap failure ERR
 $build_command
-ci-fake success $notify_commit
+ci-fake success $merge_commit
 
