@@ -2,8 +2,5 @@
 
 work/.bash_include: ~/.bash_include
 work/.gitc: ~/.gitc
-work/.m2/settings.xml: ~/.m2/settings.xml
-work/.subversion/config: ~/.subversion/config
-.svn-completion.bash: ~/.svn-completion.bash
 /opt/gradle-1.7: /opt/gradle
 /opt/apache-maven-3.0.5: /opt/maven

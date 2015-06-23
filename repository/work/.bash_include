@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export MAVEN_OPTS="-Xms256m -XX:MaxPermSize=512m -Xmx2g"
+export MAVEN_OPTS="-Xms256m -Xmx2g"
 export JAVA_TOOL_OPTIONS="$MAVEN_OPTS"
 export DATABASE_USER="-U wschoenborn"
 
