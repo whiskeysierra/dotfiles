@@ -4,8 +4,6 @@ export MAVEN_OPTS="-Xms256m -Xmx2g"
 export JAVA_TOOL_OPTIONS="$MAVEN_OPTS"
 export DATABASE_USER="-U wschoenborn"
 
-source ~/.svn-completion.bash
-
 if [ -d ~/.zalando-db ]; then
     export PATH=~/.zalando-db:$PATH
 fi
