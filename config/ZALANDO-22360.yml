@@ -1,3 +1,4 @@
 # work specifics
 
+.zshrc: ~/.zshrc
 work/.gitc: ~/.gitc
