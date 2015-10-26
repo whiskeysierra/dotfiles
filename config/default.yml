@@ -1,17 +1,7 @@
 bin: ~/bin
-.bash_aliases: ~/.bash_aliases
-.bash_profile: ~/.bash_profile
-.bashrc: ~/.bashrc
-.git-dispatcher: ~/.git-dispatcher
-.git-flow-completion: ~/.git-flow-completion
-.git-ignore: ~/.git-ignore
 .gitconfig: ~/.gitconfig
-.gitprompt: ~/.gitprompt
 .gnupg/gpg.conf: ~/.gnupg/gpg.conf
-.gradle/gradle.properties: ~/.gradle/gradle.properties
-.inputrc: ~/.inputrc
 .m2/settings.xml: ~/.m2/settings.xml
-.mvn-completion.bash: ~/.mvn-completion.bash
 .ssh: ~/.ssh
 .vimrc: ~/.vimrc
 .gitignore-global: ~/.gitignore-global
