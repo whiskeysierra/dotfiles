@@ -48,6 +48,6 @@ for module in $modules; do
         --header "Accept: application/json" \
         --header "Content-Type: application/json" \
         --request POST \
-        --data '{"state":"'"$state"'","key":"'"$module"'-https:\\/\\/ci-dev.zalando.net\\/","name":"'"$module"'","url":"https://ci-dev.zalando.net/job/'"$module"'","description":"built by '"$author"' @ '"$host"'","dateAdded":'"$now"'}' \
+        --data '{"state":"'"$state"'","key":"'"$module"'-https:\\/\\/order-accounting.cd.zalan.do\\/","name":"'"$module"'","url":"https://ci-dev.zalando.net/job/'"$module"'","description":"built by '"$author"' @ '"$host"'","dateAdded":'"$now"'}' \
         https://stash.zalando.net/rest/build-status/1.0/commits/$commit 
 done
