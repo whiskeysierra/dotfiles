@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -58,8 +58,29 @@ plugins=(aws docker extract git git-flow maven postgres)
 
 source $ZSH/oh-my-zsh.sh
 
+# allow user scripts in ~/bin
+if [ -d ~/bin ]; then
+    export PATH=~/bin:$PATH
+fi
+
+# maven
+if [ -d ~/Applications/maven/bin ]; then
+    export M2_HOME=~/Applications/maven
+    export PATH=$M2_HOME/bin:$PATH
+fi
+
+# keychain
+keychain --quiet ~/.ssh/id_personal ~/.ssh/id_work
+source ~/.keychain/$(hostname)-sh
+
+# load special zshrc additions
+if [ -f ~/.zsh_include ]; then
+    source ~/.zsh_include
+fi
+
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

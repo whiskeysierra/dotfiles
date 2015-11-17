@@ -1,4 +1,5 @@
 # work specifics
 
 .zshrc: ~/.zshrc
+work/.zsh_include: ~/.zsh_include
 work/.gitc: ~/.gitc
