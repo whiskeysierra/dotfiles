@@ -175,21 +175,22 @@ prompt_virtualenv() {
   fi
 }
 
-colors=(yellow red)
-
-select_color() {
-    index=$(echo $1 | sha1sum | python -c 'print(int(raw_input()[:40], 16) % 3 + 1)')
-    echo $colors[$index]
+select_index() {
+    echo $1 | sha1sum | python -c "print(int(raw_input()[:40], 16) % $2 + 1)"
 }
 
 prompt_account() {
     account=$(sed -E 's/.*profile: *([^,]+).*/\1/' ~/.config/mai/last_update.yaml)
-    [[ -n "$account" ]] && prompt_segment $(select_color $account) black $account
+    colors=(white yellow green red blue cyan magenta)
+    index=$(select_index $account 7)
+    [[ -n "$account" ]] && prompt_segment $colors[$index] black $account
 }
 
 prompt_region() {
     region=$AWS_DEFAULT_REGION
-    [[ -n "$region" ]] && prompt_segment $(select_color $region) black $region
+    colors=(yellow green magenta red blue cyan white)
+    index=$(select_index $region 7)
+    [[ -n "$region" ]] && prompt_segment $colors[$index] black $region
 }
 
 # Status:
