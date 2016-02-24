@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ $1 = 0000000000000000000000000000000000000000 ]; then
-    git config user.email "w.schoenborn@gmail.com"
-
-    # remove after we are done
-    rm -f $0
-fi
-

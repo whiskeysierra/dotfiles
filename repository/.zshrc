@@ -5,7 +5,7 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="whiskeysierra"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -100,6 +100,8 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias prod='mai login prod > /dev/null 2&>1'
+alias test='mai login test > /dev/null 2&>1'
+alias west='export AWS_DEFAULT_REGION=eu-west-1'
+alias central='export AWS_DEFAULT_REGION=eu-central-1'
+export AWS_DEFAULT_REGION=eu-west-1

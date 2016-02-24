@@ -135,10 +135,6 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWCOLORHINTS=true
 export GIT_PS1_SHOWDIRTYSTATE=true
 
-if [ -f ~/.gitprompt ]; then
-    source ~/.gitprompt
-fi
-
 # colored prompt with git support
 export PROMPT_COMMAND='__git_ps1 "\[\033[01;30m\]\t \[\e[0;36m\]\u\[\e[m\]@\[\033[00;32m\]\h\[\033[00;37m\]:\[\e[m\]" "\[\033[0;34m\]\w\[\e[m\] $ "'
 

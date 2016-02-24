@@ -1,18 +1,6 @@
 # personal specifics
 
-.bash_aliases: ~/.bash_aliases
-.bash_profile: ~/.bash_profile
-.bashrc: ~/.bashrc
-.git-dispatcher: ~/.git-dispatcher
-.git-flow-completion: ~/.git-flow-completion
 .git-ignore: ~/.git-ignore
-.gitprompt: ~/.gitprompt
-.gradle/gradle.properties: ~/.gradle/gradle.properties
-.inputrc: ~/.inputrc
-.mvn-completion.bash: ~/.mvn-completion.bash
 
-personal/.bash_include: ~/.bash_include
-personal/.gitc: ~/.gitc
-/opt/gradle-1.6: /opt/gradle
 /usr/local/texlive/2010/bin/universal-darwin: /opt/latex/bin
 /opt/apache-maven-3.0.5: /opt/maven
