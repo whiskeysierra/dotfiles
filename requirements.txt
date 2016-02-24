@@ -6,4 +6,5 @@ prettytable
 python-dateutil
 requests
 sh
+shyaml
 uptime

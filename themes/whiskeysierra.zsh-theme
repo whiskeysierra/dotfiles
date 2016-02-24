@@ -175,15 +175,41 @@ prompt_virtualenv() {
   fi
 }
 
+upper () {
+    tr '[:upper:][:lower:]' '[:lower:][:upper:]'
+}
+
 select_index() {
-    echo $1 | sha1sum | python -c "print(int(raw_input()[:40], 16) % $2 + 1)"
+    echo $1 | sha1sum | cut -d ' ' -f1 | upper | sed -E "s/(.+)/ibase=16;\1 % $2 + 1/" | bc
 }
 
 prompt_account() {
-    account=$(sed -E 's/.*profile: *([^,]+).*/\1/' ~/.config/mai/last_update.yaml)
-    colors=(white yellow green red blue cyan magenta)
-    index=$(select_index $account 7)
-    [[ -n "$account" ]] && prompt_segment $colors[$index] black $account
+    if [ -f ~/.config/mai/last_update.yaml ]; then
+        last_update=$(cat ~/.config/mai/last_update.yaml)
+        account=$(echo $last_update | sed -E 's/.*profile: *([^,}]+).*/\1/')
+        
+        if [ -n "$account" ]; then
+            timestamp=$(echo $last_update | sed -E 's/.*timestamp: *([^,}]+).*/\1/')
+            age=$(( $(date +%s) - $timestamp ))
+            age=$(printf "%.0f\n" "$age")
+            
+            message=$account
+            
+            # light hourglass if less than 15 minutes remaining
+            if [ $age -gt 2700 ]; then
+                message="⧖ $account"
+            fi
+            
+            # dark hourglass if login is expired
+            if [ $age -gt 3600 ]; then
+                message="⧗ $account"
+            fi
+            
+            colors=(white yellow green red blue cyan magenta)
+            index=$(select_index $account 7)
+            prompt_segment $colors[$index] black $message
+        fi
+    fi
 }
 
 prompt_region() {
