@@ -49,7 +49,7 @@ ZSH_CUSTOM=~/.dotfiles/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker extract git git-flow maven postgres mai stups)
+plugins=(aws docker extract git git-flow maven postgres mai senza)
 
 # User configuration
 
