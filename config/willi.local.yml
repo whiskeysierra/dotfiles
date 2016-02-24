@@ -2,5 +2,4 @@
 
 .git-ignore: ~/.git-ignore
 
-/usr/local/texlive/2010/bin/universal-darwin: /opt/latex/bin
 /opt/apache-maven-3.0.5: /opt/maven
