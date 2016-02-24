@@ -100,6 +100,8 @@ export LANG=en_US.UTF-8
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+export DEFAULT_USER=$(whoami)
+
 alias prod='mai login prod > /dev/null 2&>1'
 alias test='mai login test > /dev/null 2&>1'
 alias west='export AWS_DEFAULT_REGION=eu-west-1'
