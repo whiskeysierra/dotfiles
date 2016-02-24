@@ -102,8 +102,8 @@ export LANG=en_US.UTF-8
 #
 export DEFAULT_USER=$(whoami)
 
-alias prod='mai login prod > /dev/null 2&>1'
-alias test='mai login test > /dev/null 2&>1'
+alias prod='mai login prod > /dev/null 2>&1'
+alias test='mai login test > /dev/null 2>&1'
 alias west='export AWS_DEFAULT_REGION=eu-west-1'
 alias central='export AWS_DEFAULT_REGION=eu-central-1'
 export AWS_DEFAULT_REGION=eu-west-1
