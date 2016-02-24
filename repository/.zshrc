@@ -35,7 +35,7 @@ ZSH_THEME="whiskeysierra"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -49,7 +49,7 @@ ZSH_CUSTOM=~/.dotfiles/repository/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker extract git git-flow maven postgres)
+plugins=(aws docker extract git git-flow maven postgres mai stups)
 
 # User configuration
 
@@ -95,15 +95,10 @@ export LANG=en_US.UTF-8
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+export DEFAULT_USER=$(whoami)
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-export DEFAULT_USER=$(whoami)
-
-alias prod='mai login prod > /dev/null 2>&1'
-alias test='mai login test > /dev/null 2>&1'
-alias west='export AWS_DEFAULT_REGION=eu-west-1'
-alias central='export AWS_DEFAULT_REGION=eu-central-1'
-export AWS_DEFAULT_REGION=eu-west-1
