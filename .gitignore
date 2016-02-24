@@ -1,13 +1,13 @@
 /.idea
 /*.iml
 
-/repository/.gnupg/*.gpg
-/repository/.gnupg/*.gpg~
-/repository/.gnupg/random_seed
-/repository/.gnupg/gpg-agent.env
+/.gnupg/*.gpg
+/.gnupg/*.gpg~
+/.gnupg/random_seed
+/.gnupg/gpg-agent.env
 
-/repository/.ssh/id_*
-/repository/.ssh/app-*.pem
-/repository/.ssh/known_hosts
-/repository/.ssh/environment-*
+/.ssh/id_*
+/.ssh/app-*.pem
+/.ssh/known_hosts
+/.ssh/environment-*
 

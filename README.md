@@ -17,7 +17,7 @@ Fork or just clone the repository
     
 Run the setup
 
-    ~/.dotfiles/manage
+    ~/.dotfiles/setup
 
 Which symlinks everything that's configured in [config/default.yml](https://github.com/whiskeysierra/dotfiles/blob/master/config/default.yml).
 The way I managed it is, the defaults are in `config/default.yml` while the system specifics go into `config/<hostname>.yml`.

@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=~/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -43,7 +43,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=~/.dotfiles/repository/.oh-my-zsh
+ZSH_CUSTOM=~/.dotfiles/
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -53,7 +53,7 @@ plugins=(aws docker extract git git-flow maven postgres mai stups)
 
 # User configuration
 
-  export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -63,19 +63,21 @@ if [ -d ~/bin ]; then
     export PATH=~/bin:$PATH
 fi
 
-# maven
+# Maven
 if [ -d ~/Applications/maven/bin ]; then
     export M2_HOME=~/Applications/maven
     export PATH=$M2_HOME/bin:$PATH
+    export MAVEN_OPTS="-Xms256m -Xmx2g"
 fi
 
 # keychain
 keychain --quiet ~/.ssh/id_personal ~/.ssh/id_work
 source ~/.keychain/$(hostname)-sh
 
-# load special zshrc additions
-if [ -f ~/.zsh_include ]; then
-    source ~/.zsh_include
+# Database 
+export DATABASE_USER="-U wschoenborn"
+if [ -d ~/.zalando-db ]; then
+    export PATH=~/.zalando-db:$PATH
 fi
 
 # You may need to manually set your language environment
@@ -83,11 +85,12 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vi'
+export VISUAL='vi'
+
+# History
+HISTSIZE=100000
+SAVEHIST=300000
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -102,3 +105,28 @@ export DEFAULT_USER=$(whoami)
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+alias dotfiles='cd ~/.dotfiles'
+alias reload="source ~/.zshrc"
+alias setup='~/.dotfiles/setup'
+
+alias stamp='date "+%Y%m%d%H%M"'
+
+alias psgrep='ps -ef | grep $1'
+alias hgrep='history | grep $1'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+alias json='python -mjson.tool'
+alias xml='xmlstarlet fo'
+
+alias pin='sudo pip install -r requirements.txt'
+alias pup='sudo pip install --upgrade -r requirements.txt'
+
+alias deployctl='ssh -A deployctl@deploy.zalando'
+alias postgres-start='(cd ~/.zalando-db-box && vagrant up)'
+alias postgres-stop='(cd ~/.zalando-db-box && vagrant halt)'
+alias postgres-restore='(cd ~/.zalando-db-box && vagrant snapshot go clean)'
+alias postgres-reinstall='(cd ~/.zalando-db-box && vagrant destroy -f && git pull && postgres-start && vagrant snapshot take clean)'
+alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'

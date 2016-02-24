@@ -1,9 +1,0 @@
-#!/bin/sh
-
-export MAVEN_OPTS="-Xms256m -Xmx2g"
-export DATABASE_USER="-U wschoenborn"
-
-if [ -d ~/.zalando-db ]; then
-    export PATH=~/.zalando-db:$PATH
-fi
-
