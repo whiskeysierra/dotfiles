@@ -1,7 +1,9 @@
 bin: ~/bin
 .gitconfig: ~/.gitconfig
+.gitignore-global: ~/.gitignore-global
 .gnupg/gpg.conf: ~/.gnupg/gpg.conf
 .m2/settings.xml: ~/.m2/settings.xml
+.oh-my-zsh/themes/whiskeysierra.zsh-theme: ~/.oh-my-zsh/themes/whiskeysierra.zsh-theme
 .ssh: ~/.ssh
 .vimrc: ~/.vimrc
-.gitignore-global: ~/.gitignore-global
+.zshrc: ~/.zshrc
