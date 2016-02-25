@@ -1,4 +1,3 @@
-:syntax on
 :set number
 :set encoding=utf-8
 :set autoindent
@@ -10,3 +9,7 @@
 :set list
 :set listchars=tab:>>
 set tabpagemax=100
+
+syntax enable
+set background=dark
+colorscheme solarized
