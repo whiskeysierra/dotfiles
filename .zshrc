@@ -50,24 +50,18 @@ ZSH_CUSTOM=~/.dotfiles/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(\
-    aws \
-    colored-man-pages \
-    command-not-found \
-    docker \
     extract \
     git \
     git-extras \
-    git-remote-branch \
     history \
     httpie \
-    jira \
     mai \
     mvn \
-    postgres \
-    profiles \
+    pip-alias \
+    piu \
+    postgres-box \
     senza \
-    ubunutu \
-    web-search \
+    ubunutu
 )
 
 # User configuration
@@ -99,6 +93,11 @@ if [ -d ~/.zalando-db ]; then
     export PATH=~/.zalando-db:$PATH
 fi
 
+export POSTGRES_BOX_PATH=~/.zalando-db-box
+
+# Stups
+export PIU_USER=wschoenborn
+
 # You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -119,9 +118,6 @@ SAVEHIST=300000
 
 export DEFAULT_USER=$(whoami)
 
-# Jira
-JIRA_URL=https://techjira.zalando.net
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -140,18 +136,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias json='python -mjson.tool'
-alias xml='xmlstarlet fo'
-
-alias pin='sudo pip install -r requirements.txt'
-alias pup='sudo pip install --upgrade -r requirements.txt'
-
 alias deployctl='ssh -A deployctl@deploy.zalando'
-alias postgres-start='(cd ~/.zalando-db-box && vagrant up)'
-alias postgres-stop='(cd ~/.zalando-db-box && vagrant halt)'
-alias postgres-restore='(cd ~/.zalando-db-box && vagrant snapshot go clean)'
-alias postgres-reinstall='(cd ~/.zalando-db-box && vagrant destroy -f && git pull && postgres-start && vagrant snapshot take clean)'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
-
 
 # TODO projects

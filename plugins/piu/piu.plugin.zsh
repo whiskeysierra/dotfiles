@@ -1,3 +1,25 @@
+# Plugin for piu (http://docs.stups.io/en/latest/components/piu.html)
+# Automatically selects the correct odd host based on the current account and region.
 
-# TODO odd-eu-west-1.pennybags.zalan.do
-# odd-$AWS_DEFAULT_REGION.$team.zalan.do
+# TODO this should be free from zalando specifics
+function _piu() {
+    local name account
+
+    name=$(\
+        cat ~/.config/mai/last_update.yaml | \
+        sed -E 's/.*profile: *([^,}]+).*/\1/')
+
+    account=$(\
+        mai list -o tsv | \
+        sed 1d | \
+        grep -E "^$name\t" | \
+        cut -d$'\t' -f2 | \
+        cut -d' ' -f4 | \
+        grep -oE '[^():]+' | \
+        sed -E 's/^zalando-//')
+        
+    # TODO contrary to what the sources may suggest, piu is not honoring the PIU_USER variable
+    ODD_HOST="odd-$AWS_DEFAULT_REGION.$account.zalan.do" USER=$PIU_USER piu $*
+}
+
+alias piu=_piu
