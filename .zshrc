@@ -49,7 +49,26 @@ ZSH_CUSTOM=~/.dotfiles/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws docker extract git git-flow maven postgres mai senza)
+plugins=(\
+    aws \
+    colored-man-pages \
+    command-not-found \
+    docker \
+    extract \
+    git \
+    git-extras \
+    git-remote-branch \
+    history \
+    httpie \
+    jira \
+    mai \
+    mvn \
+    postgres \
+    profiles \
+    senza \
+    ubunutu \
+    web-search \
+)
 
 # User configuration
 
@@ -95,10 +114,13 @@ SAVEHIST=300000
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
+# SSH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 export DEFAULT_USER=$(whoami)
+
+# Jira
+JIRA_URL=https://techjira.zalando.net
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -130,3 +152,6 @@ alias postgres-stop='(cd ~/.zalando-db-box && vagrant halt)'
 alias postgres-restore='(cd ~/.zalando-db-box && vagrant snapshot go clean)'
 alias postgres-reinstall='(cd ~/.zalando-db-box && vagrant destroy -f && git pull && postgres-start && vagrant snapshot take clean)'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
+
+
+# TODO projects
