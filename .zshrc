@@ -77,11 +77,7 @@ if [ -d ~/bin ]; then
 fi
 
 # Maven
-if [ -d ~/Applications/maven/bin ]; then
-    export M2_HOME=~/Applications/maven
-    export PATH=$M2_HOME/bin:$PATH
-    export MAVEN_OPTS="-Xms256m -Xmx2g"
-fi
+export MAVEN_OPTS="-Xms256m -Xmx2g"
 
 # keychain
 keychain --quiet ~/.ssh/id_personal ~/.ssh/id_work
@@ -124,13 +120,9 @@ export DEFAULT_USER=$(whoami)
 # For a full list of active aliases, run `alias`.
 #
 alias .f='cd ~/.dotfiles'
-alias reload="source ~/.zshrc"
 alias setup='~/.dotfiles/setup'
 
 alias stamp='date "+%Y%m%d%H%M"'
-
-alias psgrep='ps -ef | grep $1'
-alias hgrep='history | grep $1'
 
 alias rm='rm -i'
 alias cp='cp -i'
@@ -139,4 +131,14 @@ alias mv='mv -i'
 alias deployctl='ssh -A deployctl@deploy.zalando'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
 
-# TODO projects
+# Projects
+alias p='cd ~/Projects'
+alias bps='cd ~/Projects/business-partner-service'
+alias ff='cd ~/Projects/zeos-finance'
+alias fos='cd ~/Projects/fulfillment-order-service'
+alias lps='cd ~/Projects/loyalty-point-service'
+alias oe='cd ~/Projects/zeos-orderengine'
+alias os='cd ~/Projects/zeos-order'
+alias qs='cd ~/Projects/quote-service'
+alias sit='cd ~/Projects/system-integration-tests'
+alias sos='cd ~/Projects/zeos-order'
