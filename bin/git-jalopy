@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/ jalopy.sh -c ~/Zalando_Jalopy.xml $(git diff --name-only --cached | grep -E '\.java$')

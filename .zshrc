@@ -51,10 +51,12 @@ ZSH_CUSTOM=~/.dotfiles/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(\
     extract \
-    git \
     git-extras \
+    gitfast \
     history \
     httpie \
+    home-bin \
+    keychain \
     mai \
     mvn \
     pip-alias \
@@ -71,17 +73,10 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 source $ZSH/oh-my-zsh.sh
 
-# allow user scripts in ~/bin
-if [ -d ~/bin ]; then
-    export PATH=~/bin:$PATH
-fi
+export DEFAULT_USER=$(whoami)
 
 # Maven
 export MAVEN_OPTS="-Xms256m -Xmx2g"
-
-# keychain
-keychain --quiet ~/.ssh/id_personal ~/.ssh/id_work
-source ~/.keychain/$(hostname)-sh
 
 # Database 
 export DATABASE_USER="-U wschoenborn"
@@ -112,8 +107,6 @@ SAVEHIST=300000
 # SSH
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export DEFAULT_USER=$(whoami)
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -128,11 +121,13 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias dl='cd ~/Downloads'
+alias p='cd ~/Projects'
+
 alias deployctl='ssh -A deployctl@deploy.zalando'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
 
 # Projects
-alias p='cd ~/Projects'
 alias bps='cd ~/Projects/business-partner-service'
 alias ff='cd ~/Projects/zeos-finance'
 alias fos='cd ~/Projects/fulfillment-order-service'
