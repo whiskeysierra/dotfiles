@@ -78,6 +78,11 @@ export DEFAULT_USER=$(whoami)
 # Maven
 export MAVEN_OPTS="-Xms256m -Xmx2g"
 
+if [ -d ~/Applications/maven/bin ]; then
+    export M2_HOME=~/Applications/maven
+    export PATH=$M2_HOME/bin:$PATH
+fi
+
 # Database 
 export DATABASE_USER="-U wschoenborn"
 if [ -d ~/.zalando-db ]; then
@@ -127,13 +132,22 @@ alias p='cd ~/Projects'
 alias deployctl='ssh -A deployctl@deploy.zalando'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
 
-# Projects
+# OSS projects
+alias az='cd ~/Projects/azure'
+alias lb='cd ~/Projects/logbook'
+alias rt='cd ~/Projects/riptide'
+alias tc='cd ~/Projects/tracer'
+
+# Work projects
 alias bps='cd ~/Projects/business-partner-service'
 alias ff='cd ~/Projects/zeos-finance'
+alias foc='cd ~/Projects/fulfillment-order-cockpit'
 alias fos='cd ~/Projects/fulfillment-order-service'
+alias iq='cd ~/Projects/interview-questions'
 alias lps='cd ~/Projects/loyalty-point-service'
 alias oe='cd ~/Projects/zeos-orderengine'
 alias os='cd ~/Projects/zeos-order'
 alias qs='cd ~/Projects/quote-service'
+alias rop='cd ~/Projects/rules-of-play'
 alias sit='cd ~/Projects/system-integration-tests'
 alias sos='cd ~/Projects/zeos-order'
