@@ -3,13 +3,11 @@
 
 # TODO this should be free from zalando specifics
 function _piu() {
-    local name account
+    local name domain
 
-    name=$(\
-        cat ~/.config/mai/last_update.yaml | \
-        sed -E 's/.*profile: *([^,}]+).*/\1/')
+    name=$(account)
 
-    account=$(\
+    domain=$(\
         mai list -o tsv | \
         sed 1d | \
         grep -E "^$name\t" | \
@@ -19,7 +17,7 @@ function _piu() {
         sed -E 's/^zalando-//')
         
     # TODO contrary to what the sources may suggest, piu is not honoring the PIU_USER variable
-    ODD_HOST="odd-$AWS_DEFAULT_REGION.$account.zalan.do" USER=$PIU_USER piu $*
+    ODD_HOST="odd-$AWS_DEFAULT_REGION.$domain.zalan.do" USER=$PIU_USER piu $*
 }
 
 alias piu=_piu

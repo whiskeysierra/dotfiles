@@ -57,12 +57,10 @@ plugins=(\
     httpie \
     home-bin \
     keychain \
-    mai \
     mvn \
     pip-alias \
-    piu \
     postgres-box \
-    senza \
+    stups \
     ubunutu
 )
 

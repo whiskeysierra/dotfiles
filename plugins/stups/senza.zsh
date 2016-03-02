@@ -2,10 +2,10 @@
 # Creates aliases to switch between regions more easily.
 
 function region() {
-    alias $1="export AWS_DEFAULT_REGION=$2"
+    echo $AWS_DEFAULT_REGION
 }
 
-region central eu-central-1
-region west eu-west-1
+alias central='export AWS_DEFAULT_REGION=eu-central-1'
+alias west='export AWS_DEFAULT_REGION=eu-west-1'
 
 west
