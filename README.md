@@ -32,12 +32,14 @@ Create a custom configuration similar to
 Run the setup to create all symlinks (this will create backups be default if necessary)
     
     python setup
-    
-## Theme
-
-![Screenshot of custom theme](theme.png)
 
 ## Aamazon Web Services
+
+The custom oh-my-zsh theme is a fork of
+[agnoster](https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme) and it basically just adds
+two segments, one for the AWS account and one for the region.
+
+![Screenshot of custom theme](theme.png)
 
 There are a couple of convenience commands for everyday work with multiple AWS accounts and regions. 
 
