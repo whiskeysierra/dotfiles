@@ -33,7 +33,7 @@ Run the setup to create all symlinks (this will create backups be default if nec
     
     python setup
 
-## Aamazon Web Services
+## Amazon Web Services
 
 The custom oh-my-zsh theme is a fork of
 [agnoster](https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme) and it basically just adds
