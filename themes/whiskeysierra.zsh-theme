@@ -195,28 +195,22 @@ prompt_account() {
             
             message=$account
             
-            # light hourglass if less than 15 minutes remaining
-            if [ $age -gt 2700 ]; then
-                message="⧖ $account"
-            fi
+            if [ $age -lt 3600 ]; then
+                if [ $age -gt 2700 ]; then
+                    message="⧗ $account"
+                fi
             
-            # dark hourglass if login is expired
-            if [ $age -gt 3600 ]; then
-                message="⧗ $account"
+                colors=(white yellow green red blue cyan magenta)
+                prompt_segment $colors[$(select_index $account 7)] black $message
             fi
-            
-            colors=(white yellow green red blue cyan magenta)
-            index=$(select_index $account 7)
-            prompt_segment $colors[$index] black $message
         fi
     fi
 }
 
 prompt_region() {
-    region=$AWS_DEFAULT_REGION
     colors=(yellow green magenta red blue cyan white)
-    index=$(select_index $region 7)
-    [[ -n "$region" ]] && prompt_segment $colors[$index] black $region
+    [[ -n "$AWS_DEFAULT_REGION" ]] && \
+        prompt_segment $colors[$(select_index $AWS_DEFAULT_REGION 7)] black $AWS_DEFAULT_REGION
 }
 
 # Status:
