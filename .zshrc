@@ -133,6 +133,7 @@ alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
 # OSS projects
 alias az='cd ~/Projects/azure'
 alias lb='cd ~/Projects/logbook'
+alias lm='cd ~/Projects/landmark'
 alias rt='cd ~/Projects/riptide'
 alias tc='cd ~/Projects/tracer'
 
