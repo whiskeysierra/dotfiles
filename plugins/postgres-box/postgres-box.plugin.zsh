@@ -1,4 +1,4 @@
-alias postgres-start='(cd $POSTGRES_BOX_PATH && vagrant up)'
-alias postgres-stop='(cd $POSTGRES_BOX_PATH && vagrant halt)'
-alias postgres-restore='(cd $POSTGRES_BOX_PATH && vagrant snapshot go clean)'
-alias postgres-reinstall='(cd $POSTGRES_BOX_PATH && vagrant destroy -f && git pull && postgres-start && vagrant snapshot take clean)'
+alias pg-start='(cd $POSTGRES_BOX_PATH && vagrant up)'
+alias pg-stop='(cd $POSTGRES_BOX_PATH && vagrant halt)'
+alias pg-restore='(cd $POSTGRES_BOX_PATH && vagrant snapshot go clean)'
+alias pg-reinstall='(cd $POSTGRES_BOX_PATH && vagrant destroy -f && vagrant plugin install vagrant-vbox-snapshot && pg-start && vagrant snapshot take clean)'
