@@ -136,6 +136,7 @@ alias jdm='cd ~/Projects/jackson-datatype-money'
 alias lb='cd ~/Projects/logbook'
 alias lm='cd ~/Projects/landmark'
 alias rt='cd ~/Projects/riptide'
+alias sb='cd ~/Projects/switchboard'
 alias tc='cd ~/Projects/tracer'
 
 # Work projects

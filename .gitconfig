@@ -12,6 +12,7 @@
 
     # my aliases
     amend      = commit --amend
+    authors    = !git shortlog --summary --email --numbered | cut -c8- > AUTHORS && cat AUTHORS
     diff-words = diff --color-words
     filelog    = log --patch
     find       = !git ls-files | grep -i
