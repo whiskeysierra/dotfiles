@@ -56,6 +56,7 @@ plugins=(\
     history \
     httpie \
     home-bin \
+    jenv \
     keychain \
     mvn \
     pip-alias \
