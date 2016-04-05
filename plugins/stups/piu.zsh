@@ -10,7 +10,7 @@ function _piu() {
     domain=$(\
         mai list -o tsv | \
         sed 1d | \
-        grep -E "^$name\t" | \
+        grep -E "^$name	" | \
         cut -d$'\t' -f2 | \
         cut -d' ' -f4 | \
         grep -oE '[^():]+' | \
