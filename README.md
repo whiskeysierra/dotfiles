@@ -1,6 +1,6 @@
 # dotfiles
 
-# ![Slashdot icon](https://raw.github.com/whiskeysierra/dotfiles/master/icon.png)
+![Slashdot icon](https://raw.github.com/whiskeysierra/dotfiles/master/icon.png)
 
 [![Build Status](https://travis-ci.org/whiskeysierra/dotfiles.png?branch=master)](http://travis-ci.org/whiskeysierra/dotfiles)
 
