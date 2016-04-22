@@ -175,14 +175,6 @@ prompt_virtualenv() {
   fi
 }
 
-upper () {
-    tr '[:upper:][:lower:]' '[:lower:][:upper:]'
-}
-
-select_index() {
-    echo $1 | sha1sum | cut -d ' ' -f1 | upper | sed -E "s/(.+)/ibase=16;\1 % $2 + 1/" | bc
-}
-
 prompt_account() {
     if [ -f ~/.config/mai/last_update.yaml ]; then
         last_update=$(cat ~/.config/mai/last_update.yaml)
@@ -199,18 +191,19 @@ prompt_account() {
                 if [ $age -gt 2700 ]; then
                     message="⧗ $account"
                 fi
-            
-                colors=(white yellow green red blue cyan magenta)
-                prompt_segment $colors[$(select_index $account 7)] black $message
+
+                if echo "$account" | grep -q "test"; then color=green; else color=red; fi
+                prompt_segment $color black $message
             fi
         fi
     fi
 }
 
 prompt_region() {
-    colors=(yellow green magenta red blue cyan white)
-    [[ -n "$AWS_DEFAULT_REGION" ]] && \
-        prompt_segment $colors[$(select_index $AWS_DEFAULT_REGION 7)] black $AWS_DEFAULT_REGION
+    if [ -n "$AWS_DEFAULT_REGION" ]; then
+        if echo $AWS_DEFAULT_REGION | grep -q "central"; then color=white; else color=magenta; fi
+        prompt_segment $color black $AWS_DEFAULT_REGION
+    fi
 }
 
 # Status:
