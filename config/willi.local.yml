@@ -2,3 +2,4 @@
 
 ~/Library/Application Support/mai: ~/.config/mai
 /opt/apache-maven-3.0.5: /opt/maven
+.m2/settings-oss.xml: ~/.m2/settings.xml
