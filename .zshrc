@@ -58,6 +58,7 @@ plugins=(\
     home-bin \
     jenv \
     keychain \
+    maven \
     mvn \
     pip-alias \
     postgres-box \
@@ -74,15 +75,7 @@ source $ZSH/oh-my-zsh.sh
 
 export DEFAULT_USER=$(whoami)
 
-# Maven
-export MAVEN_OPTS="-Xms256m -Xmx2g"
-
-if [ -d ~/Applications/maven/bin ]; then
-    export M2_HOME=~/Applications/maven
-    export PATH=$M2_HOME/bin:$PATH
-fi
-
-# Database 
+# Database
 export DATABASE_USER="-U wschoenborn"
 if [ -d ~/.zalando-db ]; then
     export PATH=~/.zalando-db:$PATH
@@ -129,7 +122,7 @@ alias dl='cd ~/Downloads'
 alias p='cd ~/Projects'
 
 alias deployctl='ssh -A deployctl@deploy.zalando'
-alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests=true'
+alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests'
 
 # OSS projects
 alias az='cd ~/Projects/azure'
