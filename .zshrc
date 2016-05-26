@@ -50,6 +50,7 @@ ZSH_CUSTOM=~/.dotfiles/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(\
+    each \
     extract \
     git-extras \
     gitfast \
@@ -112,6 +113,19 @@ SAVEHIST=300000
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+project=(\
+    jackson-datatype-money \
+    jackson-module-unknown-property \
+    logbook \
+    money-validation \
+    problem \
+    problem-spring-web \
+    riptide \
+    switchboard \
+    twintip-spring-web
+)
+
 alias .f='cd ~/.dotfiles'
 alias setup='~/.dotfiles/setup'
 
