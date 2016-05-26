@@ -123,6 +123,7 @@ project=(\
     problem-spring-web \
     riptide \
     switchboard \
+    tracer \
     twintip-spring-web
 )
 
