@@ -9,6 +9,9 @@ function account() {
     cat ~/.config/mai/last_update.yaml | sed -E 's/.*profile: *([^,}]+).*/\1/'
 }
 
+function account_id() {
+    mai list --output json | jq -r --arg account "$(account)" '.[] | select(.name == $account) | .role' | grep -oE '[0-9]+'
+}
 function relog() {
     eval $(account)
 }
