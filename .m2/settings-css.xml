@@ -77,6 +77,17 @@
                 </pluginRepository>
             </pluginRepositories>
         </profile>
+        <profile>
+            <id>gpg</id>
+            <activation>
+                <property>
+                    <name>!always-active</name>
+                </property>
+            </activation>
+            <properties>
+                <gpg.passphrase>+PmQNY4q</gpg.passphrase>
+            </properties>
+        </profile>
     </profiles>
 
     <activeProfiles>
