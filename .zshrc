@@ -143,6 +143,8 @@ alias p='cd ~/Projects'
 alias deployctl='ssh -A deployctl@deploy.zalando'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests'
 
+alias https='http --auth-type=zign -a token:'
+
 # OSS projects
 alias az='cd ~/Projects/azure'
 alias jdm='cd ~/Projects/jackson-datatype-money'
