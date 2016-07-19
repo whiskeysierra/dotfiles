@@ -55,7 +55,6 @@ plugins=(\
     extract \
     git-extras \
     gitfast \
-    gocd \
     history \
     httpie \
     home-bin \
