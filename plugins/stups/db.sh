@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-RANDOM_IP=$(senza instances zmon-worker --output json | jq --exit-status --raw-output '.[0].private_ip')
+RANDOM_IP=$(senza instances zmon-appliance --output json | jq --exit-status --raw-output '.[0].private_ip')
 ACCOUNT=$(cat ~/.config/mai/last_update.yaml | sed -E 's/.*profile: *([^,}]+).*/\1/')
 
 ODD_HOST="odd-$AWS_DEFAULT_REGION.$ACCOUNT.zalan.do" USER=${PIU_USER} piu ${RANDOM_IP} "Database access"
