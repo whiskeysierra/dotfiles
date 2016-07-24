@@ -159,6 +159,9 @@ alias tc='cd ~/Projects/tracer'
 
 # Work projects
 alias bps='cd ~/Projects/business-partner-service'
+alias cts='cd ~/Projects/customs-tour-service'
+alias cps='cd ~/Projects/customs-price-service'
+alias cws='cd ~/Projects/customs-weight-service'
 alias ers='cd ~/Projects/exchange-rate-service'
 alias ff='cd ~/Projects/zeos-finance'
 alias foc='cd ~/Projects/fulfillment-order-cockpit'
