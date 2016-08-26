@@ -147,6 +147,7 @@ alias https='http --auth-type=zign -a token:'
 
 # OSS projects
 alias az='cd ~/Projects/azure'
+alias fp='cd ~/Projects/faux-pas'
 alias jdm='cd ~/Projects/jackson-datatype-money'
 alias lb='cd ~/Projects/logbook'
 alias lm='cd ~/Projects/landmark'
