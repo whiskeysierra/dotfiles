@@ -7,3 +7,5 @@ function region() {
 
 alias central='export AWS_DEFAULT_REGION=eu-central-1'
 alias west='export AWS_DEFAULT_REGION=eu-west-1'
+
+central
