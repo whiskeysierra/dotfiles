@@ -5,5 +5,10 @@ if [ -d ~/Applications/maven/bin ]; then
     export PATH=$PATH:$M2_HOME/bin
 fi
 
-alias mvn-css='ln -sfv ~/.dotfiles/.m2/settings-css.xml ~/.m2/settings.xml'
-alias mvn-oss='ln -sfv ~/.dotfiles/.m2/settings-oss.xml ~/.m2/settings.xml'
+maven() {
+    ln -snfv ~/.dotfiles/.m2/settings-$1.xml ~/.m2/settings.xml
+    ln -snfv ~/Applications/apache-maven-$2 ~/Applications/maven
+}
+
+alias mvn-css='maven css 3.0.5'
+alias mvn-oss='maven oss 3.3.9'
