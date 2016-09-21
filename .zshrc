@@ -128,6 +128,15 @@ project=(\
     twintip-spring-web
 )
 
+customs=(\
+    customs-aeb-export-service \
+    customs-price-service \
+    customs-product-service \
+    customs-tour-completion-service \
+    customs-tour-service \
+    customs-weight-service
+)
+
 alias .f='cd ~/.dotfiles'
 alias setup='~/.dotfiles/setup'
 
