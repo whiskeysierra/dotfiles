@@ -116,12 +116,15 @@ SAVEHIST=300000
 #
 
 project=(\
+    faux-pas \
+    http-toolbox \
     jackson-datatype-money \
     jackson-module-unknown-property \
     logbook \
     money-validation \
     problem \
     problem-spring-web \
+    put-it-to-rest \
     riptide \
     switchboard \
     tracer \
@@ -129,12 +132,26 @@ project=(\
 )
 
 customs=(\
-    customs-aeb-export-service \
+    customs-export-service \
+    customs-import-service \
     customs-price-service \
     customs-product-service \
     customs-tour-completion-service \
     customs-tour-service \
     customs-weight-service
+)
+
+microservice=(\
+    business-partner-service \
+    customs-export-service \
+    customs-import-service \
+    customs-price-service \
+    customs-product-service \
+    customs-tour-completion-service \
+    customs-tour-service \
+    customs-weight-service \
+    exchange-rate-relay \
+    exchange-rate-service \
 )
 
 alias .f='cd ~/.dotfiles'
@@ -157,6 +174,7 @@ alias https='http --auth-type=zign -a token:'
 # OSS projects
 alias az='cd ~/Projects/azure'
 alias fp='cd ~/Projects/faux-pas'
+alias hv='cd ~/Projects/hibernate-validator'
 alias jdm='cd ~/Projects/jackson-datatype-money'
 alias lb='cd ~/Projects/logbook'
 alias lm='cd ~/Projects/landmark'
@@ -169,8 +187,12 @@ alias tc='cd ~/Projects/tracer'
 
 # Work projects
 alias bps='cd ~/Projects/business-partner-service'
+alias ces='cd ~/Projects/customs-export-service'
+alias cis='cd ~/Projects/customs-import-service'
+alias cps='cd ~/Projects/customs-product-service'
+alias crs='cd ~/Projects/customs-price-service'
+alias ctcs='cd ~/Projects/customs-tour-completion-service'
 alias cts='cd ~/Projects/customs-tour-service'
-alias cps='cd ~/Projects/customs-price-service'
 alias cws='cd ~/Projects/customs-weight-service'
 alias err='cd ~/Projects/exchange-rate-relay'
 alias ers='cd ~/Projects/exchange-rate-service'
