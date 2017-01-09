@@ -176,16 +176,16 @@ prompt_virtualenv() {
 }
 
 prompt_account() {
-    if [ -f ~/.config/mai/last_update.yaml ]; then
-        last_update=$(cat ~/.config/mai/last_update.yaml)
-        account=$(echo $last_update | sed -E 's/.*profile: *([^,}]+).*/\1/')
+    if [ -f ~/.config/zalando-aws-cli/zalando-aws-cli.yaml ]; then
+        last_update=$(cat ~/.config/zalando-aws-cli/zalando-aws-cli.yaml)
+        account=$(echo ${last_update} | grep last_update | sed -E 's/.*account_name: *([^,}]+).*/\1/')
         
         if [ -n "$account" ]; then
-            timestamp=$(echo $last_update | sed -E 's/.*timestamp: *([^,}]+).*/\1/')
+            timestamp=$(echo ${last_update} | grep last_update | sed -E 's/.*timestamp: *([^,}]+).*/\1/')
             age=$(( $(date +%s) - $timestamp ))
             age=$(printf "%.0f\n" "$age")
             
-            message=$account
+            message=${account}
             
             if [ $age -lt 3600 ]; then
                 if [ $age -gt 2700 ]; then
@@ -193,7 +193,7 @@ prompt_account() {
                 fi
 
                 if echo "$account" | grep -q "test"; then color=green; else color=red; fi
-                prompt_segment $color black $message
+                prompt_segment $color black ${message}
             fi
         fi
     fi
