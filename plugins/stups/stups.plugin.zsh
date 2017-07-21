@@ -4,3 +4,5 @@ source ${0:a:h}/impersonate.zsh
 source ${0:a:h}/piu.zsh
 source ${0:a:h}/senza.zsh
 source ${0:a:h}/zaws.zsh
+
+source <(zkubectl completion zsh)

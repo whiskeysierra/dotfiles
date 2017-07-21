@@ -83,8 +83,6 @@ if [ -d ~/.zalando-db ]; then
     export PATH=~/.zalando-db:$PATH
 fi
 
-export POSTGRES_BOX_PATH=~/.zalando-db-box
-
 # Stups
 export PIU_USER=wschoenborn
 
