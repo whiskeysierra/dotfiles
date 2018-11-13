@@ -11,4 +11,4 @@ maven() {
 }
 
 alias mvn-css='maven css 3.0.5'
-alias mvn-oss='maven oss 3.3.9'
+alias mvn-oss='maven oss 3.6.0'

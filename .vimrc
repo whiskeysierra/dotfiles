@@ -12,4 +12,3 @@ set tabpagemax=100
 
 syntax enable
 set background=dark
-colorscheme solarized
