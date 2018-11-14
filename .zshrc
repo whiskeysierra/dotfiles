@@ -59,11 +59,8 @@ plugins=(\
     httpie \
     home-bin \
     jenv \
-    keychain \
     maven \
     mvn \
-    pip-alias \
-    postgres-box \
     stups \
     ubunutu
 )

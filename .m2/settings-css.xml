@@ -18,22 +18,17 @@
         <server>
             <id>maven</id>
             <username>wschoenborn</username>
-            <password>{FZP6cQbpK1cH9jsDIgjiT/Fe50wN7cihgApcD55aG0k=}</password>
+            <password>{B5Z9G2XOkEgHHBZh2lPIQUYLAvshejCCUS17Zz5Rx5M=}</password>
         </server>
         <server>
             <id>releases</id>
             <username>wschoenborn</username>
-            <password>{FZP6cQbpK1cH9jsDIgjiT/Fe50wN7cihgApcD55aG0k=}</password>
+            <password>{B5Z9G2XOkEgHHBZh2lPIQUYLAvshejCCUS17Zz5Rx5M=}</password>
         </server>
         <server>
             <id>snapshots</id>
             <username>wschoenborn</username>
-            <password>{FZP6cQbpK1cH9jsDIgjiT/Fe50wN7cihgApcD55aG0k=}</password>
-        </server>
-        <server>
-            <id>stash.zalando.net</id>
-            <username>wschoenborn</username>
-            <password>{FZP6cQbpK1cH9jsDIgjiT/Fe50wN7cihgApcD55aG0k=}</password>
+            <password>{B5Z9G2XOkEgHHBZh2lPIQUYLAvshejCCUS17Zz5Rx5M=}</password>
         </server>
         <server>
             <id>testdb</id>
