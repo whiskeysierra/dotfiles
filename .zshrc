@@ -111,19 +111,38 @@ SAVEHIST=300000
 #
 
 project=(\
+    archer \
+    compass \
+    compass-client \
     faux-pas \
     http-toolbox \
     jackson-datatype-money \
     jackson-module-unknown-property \
     logbook \
-    money-validation \
     problem \
     problem-spring-web \
-    put-it-to-rest \
     riptide \
     switchboard \
-    tracer \
-    twintip-spring-web
+    tracer 
+)
+
+personal=(\
+    archer \
+    compass \
+    compass-client \
+    http-toolbox \
+    jackson-module-unknown-property \
+    switchboard
+)
+
+zalando=(\
+    faux-pas \
+    jackson-datatype-money \
+    logbook \
+    problem \
+    problem-spring-web \
+    riptide \
+    tracer 
 )
 
 customs=(\
@@ -132,8 +151,7 @@ customs=(\
     customs-price-service \
     customs-product-service \
     customs-tour-completion-service \
-    customs-tour-service \
-    customs-weight-service
+    customs-tour-service
 )
 
 microservice=(\
@@ -148,6 +166,16 @@ microservice=(\
     exchange-rate-relay \
     exchange-rate-service \
 )
+
+cve=(\
+    jackson-datatype-money \
+    logbook \
+    riptide \
+    problem-spring-web \
+    problem \
+)
+
+PATH=$PATH:~/Projects/aws-all-access
 
 alias .f='cd ~/.dotfiles'
 alias setup='~/.dotfiles/setup'
@@ -164,7 +192,7 @@ alias p='cd ~/Projects'
 alias deployctl='ssh -A deployctl@deploy.zalando'
 alias tomcat='mvn clean test-compile tomcat7:run-war -D skipTests'
 
-alias https='http --auth-type=zign -a token:'
+alias https='http --auth-type=zign -a token: --default-scheme=https'
 
 # OSS projects
 alias az='cd ~/Projects/azure'
@@ -192,15 +220,12 @@ alias cws='cd ~/Projects/customs-weight-service'
 alias err='cd ~/Projects/exchange-rate-relay'
 alias ers='cd ~/Projects/exchange-rate-service'
 alias ff='cd ~/Projects/zeos-finance'
-alias foc='cd ~/Projects/fulfillment-order-cockpit'
 alias fos='cd ~/Projects/fulfillment-order-service'
 alias inf='cd ~/Projects/infrastructure'
-alias iq='cd ~/Projects/interview-questions'
 alias logs='ssh logaccess.zalando'
-alias lps='cd ~/Projects/loyalty-point-service'
 alias oe='cd ~/Projects/zeos-orderengine'
 alias os='cd ~/Projects/zeos-order'
 alias qs='cd ~/Projects/quote-service'
 alias rop='cd ~/Projects/rules-of-play'
-alias sit='cd ~/Projects/system-integration-tests'
-alias sos='cd ~/Projects/zeos-order'
+alias sm='cd ~/Projects/shipping-mail-service'
+
