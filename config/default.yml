@@ -1,7 +1,7 @@
 bin: ~/bin
 .gitconfig: ~/.gitconfig
 .gitignore-global: ~/.gitignore-global
-.gnupg/gpg.conf: ~/.gnupg/gpg.conf
+.gnupg: ~/.gnupg
 .m2/settings-css.xml: ~/.m2/settings.xml
 .ssh: ~/.ssh
 .vimrc: ~/.vimrc

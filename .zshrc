@@ -62,7 +62,7 @@ plugins=(\
     maven \
     mvn \
     stups \
-    ubunutu
+    sudo 
 )
 
 # User configuration

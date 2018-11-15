@@ -56,3 +56,5 @@
     signingkey = 43A921D40B25C552
 [commit]
     gpgsign = true
+[pager]
+    branch = false
