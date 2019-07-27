@@ -226,7 +226,7 @@ build_prompt() {
   prompt_status
   prompt_virtualenv
   prompt_context
-  prompt_account
+#  prompt_account
   prompt_region
   prompt_dir
   prompt_git
