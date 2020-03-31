@@ -111,27 +111,21 @@ SAVEHIST=300000
 #
 
 project=(\
-    archer \
-    compass \
-    compass-client \
     faux-pas \
     http-toolbox \
     jackson-datatype-money \
-    jackson-module-unknown-property \
     logbook \
+    opentracing-toolbox \
     problem \
     problem-spring-web \
     riptide \
-    switchboard \
-    tracer 
+    switchboard 
 )
 
 personal=(\
-    archer \
     compass \
     compass-client \
     http-toolbox \
-    jackson-module-unknown-property \
     switchboard
 )
 
