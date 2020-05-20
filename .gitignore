@@ -5,6 +5,8 @@
 /.gnupg/private-keys-v1.d
 /.gnupg/*.gpg
 /.gnupg/*.gpg~
+/.gnupg/*.kbx
+/.gnupg/*.kbx~
 /.gnupg/random_seed
 /.gnupg/gpg-agent.env
 
