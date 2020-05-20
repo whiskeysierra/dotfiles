@@ -1,9 +1,0 @@
-bin: ~/bin
-passhash.html: ~/passhash.html
-.gitconfig: ~/.gitconfig
-.gitignore-global: ~/.gitignore-global
-.gnupg: ~/.gnupg
-.m2/settings-css.xml: ~/.m2/settings.xml
-.ssh: ~/.ssh
-.vimrc: ~/.vimrc
-.zshrc: ~/.zshrc

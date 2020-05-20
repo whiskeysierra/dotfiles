@@ -1,4 +1,3 @@
-bin: ~/bin
 .gitconfig: ~/.gitconfig
 .gitignore-global: ~/.gitignore-global
 .gnupg: ~/.gnupg

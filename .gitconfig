@@ -12,23 +12,10 @@
 
     # my aliases
     amend      = commit --amend
-    authors    = !git shortlog --summary --email --numbered | cut -c8- > AUTHORS && cat AUTHORS
-    diff-words = diff --color-words
-    dry-merge  = "!f() { git merge-tree $(git merge-base $1 $(git rev-parse --abbrev-ref HEAD)) $1 $(git rev-parse --abbrev-ref HEAD); }; f"
-    filelog    = log --patch
-    find       = !git ls-files | grep -i
-    graph      = log --oneline --abbrev-commit --all --graph --decorate --color
-    last       = !git ll -1
+    last       = log --stat --abbrev-commit -1
     ll         = log --stat --abbrev-commit
-    relate     = relate
     tags       = !git tag | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n 
     who        = shortlog --numbered --summary --email --no-merges
-    wtc        = whatthecommit
-
-    # additional aliases/commands in ~/bin/:
-    # standup: show my last commits from the last workday
-    # sync: stash, pull and stash apply
-    # track: make the current branch track the remote with the same name (--set-upstream)
 [color]
     branch = auto
     diff = auto
@@ -59,7 +46,7 @@
 [pager]
     branch = false
 [credential]
-	helper = ""
-	helper = manager-core
+    helper = ""
+    helper = manager-core
 [credential "https://dev.azure.com"]
-	useHttpPath = true
+    useHttpPath = true
