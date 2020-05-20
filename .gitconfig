@@ -50,7 +50,7 @@
     default = simple
 [remote "origin"]
     push = HEAD
-    fetch = +refs/heads/*:refs/remotes/origin/*
+    # fetch = +refs/heads/*:refs/remotes/origin/*
 [user]
     name = Willi Schönborn
     signingkey = 43A921D40B25C552
@@ -58,3 +58,8 @@
     gpgsign = true
 [pager]
     branch = false
+[credential]
+	helper = ""
+	helper = manager-core
+[credential "https://dev.azure.com"]
+	useHttpPath = true

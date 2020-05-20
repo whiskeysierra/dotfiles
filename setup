@@ -23,13 +23,13 @@ parser.add_argument('--dry', dest='dry', action='store_true', default=False,
 args = parser.parse_args()
 
 global_config = os.path.join(config_directory, 'default.yml')
-print "Loading global config %s" % global_config
+print("Loading global config %s" % global_config)
 with open(global_config) as f:
     config = yaml.safe_load(f)
 
 host_config = os.path.join(config_directory, platform.node() + '.yml')
 if os.path.exists(host_config):
-    print "Loading host config %s" % host_config
+    print("Loading host config %s" % host_config)
     with open(host_config) as f:
         config.update(yaml.safe_load(f))
 
@@ -73,7 +73,7 @@ def link(source, target):
         os.symlink(source, target)
 
 
-for source, target in config.iteritems():
+for source, target in config.items():
     source = os.path.expanduser(source)
     if os.path.isabs(source):
         real_source = source
@@ -84,7 +84,7 @@ for source, target in config.iteritems():
     if not os.path.exists(real_source):
         raise ValueError('No such file or directory. %s' % real_source)
 
-    print target,
+    print(target,)
     states = []
 
     if os.path.islink(real_target):
@@ -101,7 +101,7 @@ for source, target in config.iteritems():
             states.append(color.red('overwritten'))
             pass
         else:
-            print '[' + color.red('skipped') + ']'
+            print('[' + color.red('skipped') + ']')
             continue
 
     target_directory = os.path.dirname(real_target)
@@ -118,4 +118,4 @@ for source, target in config.iteritems():
     link(real_source, real_target)
     states.append(color.green('linked'))
 
-    print '[' + ', '.join(states) + ']'
+    print('[' + ', '.join(states) + ']')

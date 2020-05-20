@@ -13,3 +13,4 @@
 /.ssh/known_hosts
 /.ssh/environment-*
 
+/themes/powerlevel10k/
