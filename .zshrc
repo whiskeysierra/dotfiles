@@ -124,6 +124,7 @@ personal=(\
 )
 
 PATH=$PATH:~/Library/Python/3.7/bin
+PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 
 alias .f='cd ~/.dotfiles'
 

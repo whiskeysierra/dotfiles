@@ -14,7 +14,9 @@
     amend      = commit --amend
     last       = log --stat --abbrev-commit -1
     ll         = log --stat --abbrev-commit
+    sync       = !git pull && git push
     tags       = !git tag | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n 
+    update     = !git stash -u && git pull && git stash pop
     who        = shortlog --numbered --summary --email --no-merges
 [color]
     branch = auto
