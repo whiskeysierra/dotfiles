@@ -19,6 +19,7 @@ brew install plantuml
 brew install postgresql
 brew install python
 brew install terraform
+brew install wget
 brew install youtube-dl
 brew install zsh
 
