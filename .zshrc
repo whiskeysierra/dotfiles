@@ -127,6 +127,8 @@ PATH=$PATH:~/Library/Python/3.7/bin
 PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 
 alias .f='cd ~/.dotfiles'
+alias a='cd ~/Projecs/architecture'
+alias cm='cd ~/Projects/controller-management'
 
 alias rm='rm -i'
 alias cp='cp -i'
