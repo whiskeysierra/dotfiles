@@ -1,18 +1,18 @@
 /.idea
 /*.iml
 
-/.gnupg/crls.d
-/.gnupg/private-keys-v1.d
-/.gnupg/*.gpg
-/.gnupg/*.gpg~
-/.gnupg/*.kbx
-/.gnupg/*.kbx~
-/.gnupg/random_seed
-/.gnupg/gpg-agent.env
+/gpg/.gnupg/crls.d
+/gpg/.gnupg/private-keys-v1.d
+/gpg/.gnupg/*.gpg
+/gpg/.gnupg/*.gpg~
+/gpg/.gnupg/*.kbx
+/gpg/.gnupg/*.kbx~
+/gpg/.gnupg/random_seed
+/gpg/.gnupg/gpg-agent.env
 
-/.ssh/id_*
-/.ssh/app-*.pem
-/.ssh/known_hosts
-/.ssh/environment-*
+/ssh/.ssh/id_*
+/ssh/.ssh/known_hosts
 
 /themes/powerlevel10k/
+
+.DS_Store

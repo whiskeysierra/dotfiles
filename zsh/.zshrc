@@ -63,9 +63,7 @@ plugins=(\
     gitfast \
     history \
     httpie \
-    home-bin \
     jenv \
-    maven \
     mvn \
     sudo 
 )
