@@ -8,4 +8,3 @@ each() {
         (cd $element; >&2 echo ">>> ${fg[yellow]}$element$reset_color"; $@)
     done;
 }
-

@@ -29,19 +29,19 @@
 [color]
     branch = auto
     diff = auto
-    grep = auto                                                                 
+    grep = auto
     status = auto
     ui = auto
     interactive = auto
-[color "grep"]                                                                  
-    filename = magenta                                                          
-    match    = red bold                                                         
-    linenumber = green                                                          
+[color "grep"]
+    filename = magenta
+    match    = red bold
+    linenumber = green
     separator  = cyan
 [branch]
     autosetuprebase = always
-[merge]                                                                         
-    log = true                                                                  
+[merge]
+    log = true
     summary = true
 [push]
     default = simple

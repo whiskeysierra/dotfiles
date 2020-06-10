@@ -110,7 +110,7 @@ var browser = new Object();
 browser.version = parseInt(navigator.appVersion);
 browser.isNetscape = false;
 browser.isMicrosoft = false;
-if (navigator.appName.indexOf("Netscape") != -1) 
+if (navigator.appName.indexOf("Netscape") != -1)
     browser.isNetscape = true;
 else if (navigator.appName.indexOf("Microsoft") != -1)
     browser.isMicrosoft = true;
@@ -129,7 +129,7 @@ function onLoad()
     setTimeout('checkChange()',1000);
 }
 
-function validate(form) 
+function validate(form)
 {
     var siteTag   = document.getElementById('site-tag');
     var masterKey = document.getElementById('master-key');
@@ -146,7 +146,7 @@ function validate(form)
     return true;
 }
 
-function update() 
+function update()
 {
     var siteTag   = document.getElementById('site-tag');
     var masterKey = document.getElementById('master-key');

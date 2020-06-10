@@ -65,7 +65,7 @@ plugins=(\
     httpie \
     jenv \
     mvn \
-    sudo 
+    sudo
 )
 
 # User configuration
@@ -111,7 +111,7 @@ project=(\
     problem \
     problem-spring-web \
     riptide \
-    switchboard 
+    switchboard
 )
 
 personal=(\
