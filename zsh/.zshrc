@@ -70,7 +70,7 @@ plugins=(\
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin:~/Library/Python/3.7/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -120,9 +120,6 @@ personal=(\
     http-toolbox \
     switchboard
 )
-
-PATH=$PATH:~/Library/Python/3.7/bin
-PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 
 alias .f='cd ~/.dotfiles'
 alias a='cd ~/Projects/architecture'
