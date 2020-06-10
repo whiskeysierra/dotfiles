@@ -3,6 +3,8 @@
     trustctime = false
     pager = less -r
     excludesfile = ~/.gitignore-global
+[init]
+    templateDir = ~/.config/git/template/
 [alias]
     # common typos
     staus      = status
