@@ -64,7 +64,7 @@
     # dotnet_version        # .NET version (https://dotnet.microsoft.com)
     # php_version           # php version (https://www.php.net/)
     # laravel_version       # laravel php framework version (https://laravel.com/)
-    java_version          # java version (https://www.java.com/)
+    # java_version          # java version (https://www.java.com/)
     # package               # name@version from package.json (https://docs.npmjs.com/files/package.json)
     rbenv                   # ruby version from rbenv (https://github.com/rbenv/rbenv)
     rvm                     # ruby version from rvm (https://rvm.io)
@@ -1111,7 +1111,7 @@
   typeset -g POWERLEVEL9K_JENV_SOURCES=(shell local global)
   # If set to false, hide java version if it's the same as global:
   # $(jenv version-name) == $(jenv global).
-  typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=false
+  typeset -g POWERLEVEL9K_JENV_PROMPT_ALWAYS_SHOW=true
   # If set to false, hide java version if it's equal to "system".
   typeset -g POWERLEVEL9K_JENV_SHOW_SYSTEM=true
   # Custom icon.
