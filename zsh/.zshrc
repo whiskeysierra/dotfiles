@@ -71,7 +71,6 @@ plugins=(\
 # User configuration
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin:~/Library/Python/3.7/bin
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +122,7 @@ personal=(\
 
 alias .f='cd ~/.dotfiles'
 alias a='cd ~/Projects/architecture'
+alias c='cd ~/Projects/gropyos/package/gropyos-controller'
 alias cm='cd ~/Projects/controller-management'
 
 alias rm='rm -i'
