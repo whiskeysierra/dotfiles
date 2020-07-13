@@ -21,11 +21,14 @@
     tags      = !git tag | sort -t. -k 1,1n -k 2,2n -k 3,3n -k 4,4n
     update    = !git stash --include-untracked && git pull && git stash pop
     who       = shortlog --numbered --summary --email --no-merges
+    word-diff = diff --color-words=.
 
-    # rename master to main
-    main      = !git branch --move main && git push --set-upstream origin main
-    # remove the remnants of the master branch once origin has been cleaned up
-    no-master = !git fetch && git remote prune origin && git remote set-head origin --auto
+    # HOWTO migrate from master to main
+    # 1. Rename local master to main and update github workflows: git main
+    # 2. Change default branch from master to main on Github
+    # 3. Change branch protection from master to main on Github
+    # 4. Delete remote master branch and clean up any remnants of master:
+    no-master = !git push origin --delete master && git fetch && git remote prune origin && git remote set-head origin --auto
 [color]
     branch = auto
     diff = auto

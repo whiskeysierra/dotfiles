@@ -17,7 +17,7 @@ install_ohmyzsh() {
 }
 
 install_dotfiles() {
-  stow git gpg maven passhash ssh vim zsh p10k
+  stow bin git gpg maven passhash ssh vim zsh p10k
 }
 
 install_casks() {

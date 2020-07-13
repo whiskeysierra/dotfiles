@@ -25,7 +25,7 @@ Otherwise `stow` won't work.
 
 Now you can link individual parts of the dotfiles into your home directory:
 
-    stow git gpg maven passhash ssh vim zsh p10k
+    stow bin git gpg maven passhash ssh vim zsh p10k
 
 As an optional step you may choose to install my favorite tools and apps.
 Including but not limited to brew, zsh, oh-my-zsh, etc.
