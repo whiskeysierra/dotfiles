@@ -123,6 +123,7 @@ personal=(\
 alias .f='cd ~/.dotfiles'
 alias a='cd ~/Projects/architecture'
 alias c='cd ~/Projects/gropyos/package/gropyos-controller'
+alias g='cd ~/Projects/gropyos'
 alias cm='cd ~/Projects/controller-management'
 
 alias rm='rm -i'
