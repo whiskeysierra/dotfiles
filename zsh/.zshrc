@@ -57,15 +57,17 @@ ZSH_CUSTOM=~/.dotfiles/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(\
+    common-aliases \
     each \
     extract \
-    git-extras \
-    gitfast \
+    git-flow-avh \
     history \
     httpie \
     jenv \
     mvn \
-    sudo
+    profiles \
+    sudo \
+    terraform
 )
 
 # User configuration
@@ -125,10 +127,6 @@ alias a='cd ~/Projects/architecture'
 alias c='cd ~/Projects/gropyos/package/gropyos-controller'
 alias g='cd ~/Projects/gropyos'
 alias cm='cd ~/Projects/controller-management'
-
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
 
 alias dl='cd ~/Downloads'
 alias p='cd ~/Projects'
