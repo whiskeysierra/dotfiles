@@ -61,6 +61,7 @@ plugins=(\
     each \
     extract \
     git-flow-avh \
+    gpg-agent \
     history \
     httpie \
     jenv \
