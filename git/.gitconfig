@@ -2,7 +2,6 @@
     ignorecase = false
     trustctime = false
     pager = less -r
-    excludesfile = ~/.gitignore-global
 [init]
     # can't be a symlink
     templateDir = ~/.dotfiles/git-template
