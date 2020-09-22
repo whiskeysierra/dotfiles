@@ -68,7 +68,7 @@ plugins=(\
 
 # User configuration
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin:~/Library/Python/3.7/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin:~/Library/Python/3.7/bin:~/.gem/ruby/2.3.0/bin
 
 source $ZSH/oh-my-zsh.sh
 
