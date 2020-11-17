@@ -137,10 +137,11 @@ alias tc='cd ~/Projects/tracer'
 
 # Work projects
 alias a='cd ~/Projects/architecture'
+alias as='cd ~/Projects/attestation-service'
 alias c='cd ~/Projects/gropyos/package/gropyos-controller'
-alias cm='cd ~/Projects/controller-management'
 alias g='cd ~/Projects/gropyos'
 alias mes='cd ~/Projects/mes'
+alias us='cd ~/Projects/update-service'
 
 alias rearrange-displays1='displayplacer "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
 alias rearrange-displays2='displayplacer "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
