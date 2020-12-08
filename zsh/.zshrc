@@ -73,7 +73,10 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin:~
 source $ZSH/oh-my-zsh.sh
 
 autoload -U +X bashcompinit && bashcompinit
-source /usr/local/etc/bash_completion.d/az
+
+if [ -e /usr/local/etc/bash_completion.d/az ]; then
+    source /usr/local/etc/bash_completion.d/az
+fi
 
 # You may need to manually set your language environment
 export LC_ALL=en_US.UTF-8
