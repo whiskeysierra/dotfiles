@@ -68,7 +68,9 @@ plugins=(\
 
 # User configuration
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin:~/Library/Python/3.7/bin:~/.gem/ruby/2.3.0/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin
+
+# TODO ~/Library/Python/3.7/bin
 
 source $ZSH/oh-my-zsh.sh
 
@@ -76,6 +78,20 @@ autoload -U +X bashcompinit && bashcompinit
 
 if [ -e /usr/local/etc/bash_completion.d/az ]; then
     source /usr/local/etc/bash_completion.d/az
+fi
+
+if [ -d ~/go ]; then
+    export GOPATH=$HOME/go
+    export GOROOT="$(brew --prefix golang)/libexec"
+    export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+fi
+
+if [ -d /usr/local/opt/ruby ]; then
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
+fi
+
+if [ -d $HOME/.gem/ruby/2.7.0 ]; then
+    export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
 fi
 
 # You may need to manually set your language environment
