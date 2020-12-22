@@ -68,9 +68,7 @@ plugins=(\
 
 # User configuration
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:~/bin
-
-# TODO ~/Library/Python/3.7/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/Library/Python/3.9/bin:$HOME/bin
 
 source $ZSH/oh-my-zsh.sh
 
