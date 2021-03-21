@@ -1,17 +1,12 @@
 /.idea
 /*.iml
 
-/gpg/.gnupg/crls.d
-/gpg/.gnupg/private-keys-v1.d
-/gpg/.gnupg/*.gpg
-/gpg/.gnupg/*.gpg~
-/gpg/.gnupg/*.kbx
-/gpg/.gnupg/*.kbx~
-/gpg/.gnupg/random_seed
-/gpg/.gnupg/gpg-agent.env
+/gpg
+!/gpg/.gnupg/gpg.conf
+!/gpg/.gnupg/gpg-agent.conf
 
-/ssh/.ssh/id_*
-/ssh/.ssh/known_hosts
+/ssh
+!/ssh/ssh/config
 
 /themes/powerlevel10k/
 

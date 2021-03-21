@@ -60,6 +60,7 @@ plugins=(\
     history \
     httpie \
     jenv \
+    kubectl \
     mvn \
     profiles \
     sudo \
@@ -156,6 +157,8 @@ alias p='cd ~/Projects'
 alias main='git checkout main'
 alias trunk='git checkout trunk'
 
+alias skip='echo "-D duplicate-finder.skip -D dependency-check.skip -D skipTests"'
+
 # OSS projects
 alias fp='cd ~/Projects/faux-pas'
 alias jdm='cd ~/Projects/jackson-datatype-money'
@@ -171,9 +174,10 @@ alias a='cd ~/Projects/architecture'
 alias as='cd ~/Projects/attestation-service'
 alias c='cd ~/Projects/gropyos/package/gropyos-controller'
 alias g='cd ~/Projects/gropyos'
-alias le='cd ~/Projects/lets-encrypt'
+alias i='cd ~/Projects/infrastructure'
 alias mes='cd ~/Projects/mes'
 alias pipe='cd ~/Projects/pipelines'
+alias st='cd ~/Projects/service-templates'
 alias us='cd ~/Projects/update-service'
 
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'

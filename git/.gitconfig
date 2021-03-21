@@ -53,7 +53,7 @@
 [user]
     name = Willi Schönborn
     useConfigOnly = true
-    signingkey = 43A921D40B25C552
+    signingkey = 0x5933861F7197F8C7
 [commit]
     gpgsign = true
 [pager]
