@@ -1,12 +1,15 @@
 /.idea
 /*.iml
 
-/gpg
+/gpg/**/*
+!/gpg/.gnupg
 !/gpg/.gnupg/gpg.conf
 !/gpg/.gnupg/gpg-agent.conf
 
-/ssh
+/ssh/**/*
+!/ssh/.ssh
 !/ssh/.ssh/config
+!/ssh/.ssh/authorized_keys
 !/ssh/.ssh/id_*.pub
 
 /themes/powerlevel10k/
