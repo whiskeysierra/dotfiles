@@ -31,7 +31,7 @@ As an optional step you may choose to install my favorite tools and apps.
 Including but not limited to brew, zsh, oh-my-zsh, etc.
 
     cd bootstrap
-    ./bootstrap.sh
+    ./setup.sh
 
 ## Attributions
 

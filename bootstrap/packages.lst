@@ -1,0 +1,83 @@
+# Formulae
+
+## Common
+
+awk
+cloc
+git
+git-lfs
+ffmpeg
+gpgme
+grep
+hopenpgp-tools
+httpie
+itchyny/tap/base58
+jenv
+jq
+moreutils
+netcat
+ossp-uuid
+paperkey
+pinentry-mac
+plantuml
+pre-commit
+romkatv/powerlevel10k/powerlevel10k
+shellcheck
+sops
+stow
+tree
+watch
+wget
+yamllint
+ykman
+
+## Personal
+
+youtube-dl
+
+## Work
+
+azure-cli
+consul
+go
+grpcurl
+helm
+kaos/shell/bats-assert
+kind
+kubectx
+kustomize
+minamijoyo/tfmigrate/tfmigrate
+sl1pm4t/k2tf/k2tf
+terraform-docs
+terraform@0.13
+tfenv
+vault
+
+# Casks
+
+## Common
+
+adoptopenjdk11
+adoptopenjdk8
+docker
+firefox
+iterm2
+
+## Personal
+
+tiptoi-manager
+
+## Work
+
+git-credential-manager-core
+google-backup-and-sync
+jetbrains-toolbox
+logitech-camera-settings
+microsoft-teams
+nordic-nrf-command-line-tools
+nordic-nrf-connect
+segger-jlink
+signal
+slack
+vagrant
+virtualbox
