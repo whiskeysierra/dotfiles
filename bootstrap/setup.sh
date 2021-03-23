@@ -1,8 +1,8 @@
 #!/bin/bash
 
 confirm() {
-  echo -n "$1 [y/N]? " <&3
-  read -r choice
+  echo -n "$1 [y/N]? "
+  read -r choice <&3
   case $choice in
     y|Y) true;;
     *) false;;
@@ -26,7 +26,7 @@ configure_taps() {
 }
 
 install_packages() {
-  list taps | while read -r package; do
+  list packages | while read -r package; do
     if confirm "Install $package"; then
       brew install "$package"
     fi
