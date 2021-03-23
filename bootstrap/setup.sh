@@ -1,7 +1,7 @@
 #!/bin/bash
 
 confirm() {
-  echo -n "$1 [y/N]? "
+  echo -n "$1 [y/N]? " <&3
   read -r choice
   case $choice in
     y|Y) true;;
@@ -18,20 +18,16 @@ install_brew() {
 }
 
 configure_taps() {
-  exec 3<&0 # preserve standard input
-
   list taps | while read -r tap; do
-    if confirm "Configure $tap" <&3; then
+    if confirm "Configure $tap"; then
       brew tap "$tap"
     fi
   done
 }
 
 install_packages() {
-  exec 3<&0 # preserve standard input
-
   list taps | while read -r package; do
-    if confirm "Install $package" <&3; then
+    if confirm "Install $package"; then
       brew install "$package"
     fi
   done
@@ -44,6 +40,8 @@ install_ohmyzsh() {
 install_dotfiles() {
   stow bin git gpg maven passhash ssh vim zsh p10k
 }
+
+exec 3<&0 # preserve standard input
 
 confirm "Install brew" && install_brew
 
