@@ -6,6 +6,7 @@
 !/gpg/.gnupg/.gpg-v21-migrated
 !/gpg/.gnupg/gpg.conf
 !/gpg/.gnupg/gpg-agent.conf
+!/gpg/.gnupg/sshcontrol
 
 /ssh/**/*
 !/ssh/.ssh
