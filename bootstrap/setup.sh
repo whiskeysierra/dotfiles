@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -euo pipefail
-
 confirm() {
   echo -n "$1 [y/N]? "
   read -r choice
