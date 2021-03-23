@@ -3,7 +3,7 @@
 set -euo pipefail
 
 confirm() {
-  echo -n "$1 [y/N]?"
+  echo -n "$1 [y/N]? "
   read -r choice
   case $choice in
     y|Y) true;;
