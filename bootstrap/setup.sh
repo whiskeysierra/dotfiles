@@ -45,6 +45,11 @@ install_dotfiles() {
   stow --dir "$(directory)" bin git gpg maven passhash ssh vim zsh p10k
 }
 
+setup_gpg() {
+    chmod 0700 ~/.gnupg
+    chmod -R 0600 ~/.gnupg/*
+}
+
 exec 3<&0 # preserve standard input
 
 confirm "Install brew" && install_brew
@@ -54,6 +59,8 @@ install_packages
 
 confirm "Install oh-my-zsh" && install_ohmyzsh
 confirm "Stow dotfiles" && install_dotfiles
+
+confirm "Setup gpg" && setup_gpg
 
 # TODO ssh keys
 # TODO gnupg keys (https://gist.github.com/chrisroos/1205934)
