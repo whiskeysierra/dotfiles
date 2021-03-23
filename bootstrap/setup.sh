@@ -1,5 +1,9 @@
 #!/bin/bash
 
+directory() {
+    git rev-parse --show-toplevel
+}
+
 confirm() {
   echo -n "$1 [y/N]? "
   read -r choice <&3
@@ -10,7 +14,7 @@ confirm() {
 }
 
 list() {
-  grep -vE '(^$)|^#' "$1.lst"
+  grep -vE '(^$)|^#' "$(directory)/bootstrap/$1.lst"
 }
 
 install_brew() {
@@ -38,7 +42,7 @@ install_ohmyzsh() {
 }
 
 install_dotfiles() {
-  stow bin git gpg maven passhash ssh vim zsh p10k
+  stow --dir "$(directory)" bin git gpg maven passhash ssh vim zsh p10k
 }
 
 exec 3<&0 # preserve standard input
