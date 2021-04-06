@@ -70,6 +70,7 @@ plugins=(\
 # User configuration
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/Library/Python/3.9/bin:$HOME/bin
+export XDG_CONFIG_HOME=$HOME/.config
 
 source $ZSH/oh-my-zsh.sh
 
@@ -183,10 +184,24 @@ alias us='cd ~/Projects/update-service'
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
-alias rearrange-displays1='displayplacer "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
-alias rearrange-displays2='displayplacer "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
+secrets () {
+  set -o allexport
+  # shellcheck disable=SC1090
+  source <(sops --decrypt --output-type dotenv ~/.dotfiles/secrets.yaml)
+  set +o allexport
+}
+
+setup-tf() {
+  args="-var-file $HOME/Projects/infrastructure/GLOBAL.tfvars.json"
+  export TF_CLI_ARGS_apply="$args"
+  export TF_CLI_ARGS_destroy="$args"
+  export TF_CLI_ARGS_import="$args"
+  export TF_CLI_ARGS_plan="$args"
+  export TF_CLI_ARGS_refresh="$args"
+}
 
 export VAGRANT_EXPERIMENTAL=disks
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# shellcheck disable=SC1090
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
