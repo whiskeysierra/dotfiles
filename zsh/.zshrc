@@ -184,6 +184,12 @@ alias us='cd ~/Projects/update-service'
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
+debug() {
+  overrides="$(jq -nc --arg user "$USER" \
+      '{apiVersion: "v1", metadata: {annotations: {"app.kubernetes.io/managed-by": $user, "consul.hashicorp.com/connect-inject": "false"}}}')"
+  kubectl run -it --rm debug --image=ubuntu:latest --restart=Never --overrides="$overrides" -- /bin/bash
+}
+
 secrets () {
   set -o allexport
   # shellcheck disable=SC1090
