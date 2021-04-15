@@ -1,5 +1,9 @@
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# shellcheck disable=SC1090
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -182,7 +186,7 @@ alias i='cd ~/Projects/infrastructure'
 alias mes='cd ~/Projects/mes'
 alias pipe='cd ~/Projects/pipelines'
 alias st='cd ~/Projects/service-templates'
-alias ua=cd ~/Projects/update-service'
+alias ua='cd ~/Projects/update-service'
 alias us='cd ~/Projects/update-service'
 
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
@@ -212,6 +216,3 @@ setup-tf() {
 
 export VAGRANT_EXPERIMENTAL=disks
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# shellcheck disable=SC1090
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
