@@ -172,13 +172,17 @@ alias tc='cd ~/Projects/tracer'
 
 # Work projects
 alias a='cd ~/Projects/architecture'
+alias aa='cd ~/Projects/attestation-service'
 alias as='cd ~/Projects/attestation-service'
-alias c='cd ~/Projects/gropyos/package/gropyos-controller'
+alias ad='cd ~/Projects/gropyos/package/gropyos-application'
+alias ca='cd ~/Projects/config-api'
+alias cs='cd ~/Projects/config-api'
 alias g='cd ~/Projects/gropyos'
 alias i='cd ~/Projects/infrastructure'
 alias mes='cd ~/Projects/mes'
 alias pipe='cd ~/Projects/pipelines'
 alias st='cd ~/Projects/service-templates'
+alias ua=cd ~/Projects/update-service'
 alias us='cd ~/Projects/update-service'
 
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
