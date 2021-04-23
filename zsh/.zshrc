@@ -186,6 +186,7 @@ alias i='cd ~/Projects/infrastructure'
 alias mes='cd ~/Projects/mes'
 alias pipe='cd ~/Projects/pipelines'
 alias st='cd ~/Projects/service-templates'
+alias tgc='cd ~/Projects/tech.gropyus.com'
 alias ua='cd ~/Projects/update-service'
 alias us='cd ~/Projects/update-service'
 
