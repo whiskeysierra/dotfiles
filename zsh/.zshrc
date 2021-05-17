@@ -193,6 +193,26 @@ alias us='cd ~/Projects/update-service'
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
+logs() {
+  namespace=$1
+  deployment=$2
+  shift 2
+
+  kubectl logs -f "$@" -n "$namespace" "deployment/$deployment"
+}
+
+all-logs() {
+  logs "$@" --all-containers
+}
+
+main-logs() {
+  logs "$@" --container main
+}
+
+envoy-logs() {
+  logs "$@" --container envoy-sidecar
+}
+
 debug() {
   overrides="$(jq -nc --arg user "$USER" \
       '{apiVersion: "v1", metadata: {annotations: {"app.kubernetes.io/managed-by": $user, "consul.hashicorp.com/connect-inject": "false"}}}')"
