@@ -74,6 +74,10 @@ plugins=(\
 # User configuration
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/Library/Python/3.9/bin:$HOME/bin
+
+# https://dev.gnupg.org/T5415
+export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH"
+
 export XDG_CONFIG_HOME=$HOME/.config
 
 source $ZSH/oh-my-zsh.sh
