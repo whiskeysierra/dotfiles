@@ -197,6 +197,13 @@ alias us='cd ~/Projects/update-service'
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
+# Maven in Docker
+mind() {
+  docker run -it --rm -v "$HOME/.m2":/root/.m2 -v "$(pwd):/${PWD##*/}" -w "/${PWD##*/}" openjdk:8 ./mvnw "$@"
+}
+
+compctl -K listMavenCompletions mind
+
 logs() {
   namespace=$1
   deployment=$2
