@@ -197,6 +197,11 @@ alias us='cd ~/Projects/update-service'
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
+# generate identifier (random 128 bit, base58-encoded)
+genid() {
+  od -N 16 -t uL -An /dev/urandom | tr -d " " | base58 -e bitcoin
+}
+
 # Maven in Docker
 mind() {
   docker run -it --rm -v "$HOME/.m2":/root/.m2 -v "$(pwd):/${PWD##*/}" -w "/${PWD##*/}" openjdk:8 ./mvnw "$@"
