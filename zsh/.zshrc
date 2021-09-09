@@ -167,6 +167,37 @@ arch=(\
     tiles
 )
 
+docs() {
+  cd ~/Projects/architecture/tech.gropyus.com || exit 1
+  bin/run repositories
+}
+
+docs=()
+for project in $(docs); do
+  docs+=("$project")
+done
+
+work() {
+  cd ~/Projects || exit 1
+  find architecture bos infrastructure security \
+      -mindepth 1 -maxdepth 1 -type d
+}
+
+work=()
+for project in $(work); do
+  work+=("$project")
+done
+
+security() {
+  cd ~/Projects/security || exit 1
+  find . -mindepth 1 -maxdepth 1 -type d
+}
+
+security=()
+for project in $(security); do
+  security+=("$project")
+done
+
 alias .f='cd ~/.dotfiles'
 alias dl='cd ~/Downloads'
 alias p='cd ~/Projects'
@@ -177,39 +208,41 @@ alias trunk='git checkout trunk'
 alias skip='echo "-D duplicate-finder.skip -D dependency-check.skip -D skipTests"'
 
 # OSS projects
-alias fp='cd ~/Projects/faux-pas'
-alias jdm='cd ~/Projects/jackson-datatype-money'
-alias lb='cd ~/Projects/logbook'
-alias pb='cd ~/Projects/problem'
-alias psw='cd ~/Projects/problem-spring-web'
-alias rt='cd ~/Projects/riptide'
-alias sb='cd ~/Projects/switchboard'
-alias tc='cd ~/Projects/tracer'
+alias fp='cd ~/Projects/oss/faux-pas'
+alias jdm='cd ~/Projects/oss/jackson-datatype-money'
+alias lb='cd ~/Projects/oss/logbook'
+alias pb='cd ~/Projects/oss/problem'
+alias psw='cd ~/Projects/oss/problem-spring-web'
+alias rt='cd ~/Projects/oss/riptide'
+alias sb='cd ~/Projects/oss/switchboard'
+alias tc='cd ~/Projects/oss/tracer'
 
 # Work projects
 alias a='cd ~/Projects/architecture'
-alias aa='cd ~/Projects/attestation-service'
-alias as='cd ~/Projects/attestation-service'
-alias ad='cd ~/Projects/gropyos/package/gropyos-application'
-alias ca='cd ~/Projects/config-api'
-alias cs='cd ~/Projects/config-api'
-alias g='cd ~/Projects/gropyos'
-alias i='cd ~/Projects/infrastructure'
-alias mes='cd ~/Projects/mes'
-alias pipe='cd ~/Projects/pipelines'
-alias st='cd ~/Projects/service-templates'
-alias sts='cd ~/Projects/security-token-service'
-alias tgc='cd ~/Projects/tech.gropyus.com'
-alias ua='cd ~/Projects/update-service'
-alias ucs='cd ~/Projects/user-certificate-service'
-alias us='cd ~/Projects/update-service'
+alias aa='cd ~/Projects/architecture/architecture'
+alias tgc='cd ~/Projects/architecture/tech.gropyus.com'
 
+# TODO bd = building-device + prefix
+alias bas='cd ~/Projects/bos/attestation-api'
+alias bca='cd ~/Projects/bos/config-api'
+alias bua='cd ~/Projects/bos/update-api'
+
+alias i='cd ~/Projects/infrastructure'
+alias ii='cd ~/Projects/infrastructure/infrastructure'
+alias st='cd ~/Projects/infrastructure/service-templates'
+
+
+alias aca='cd ~/Projects/security/account-certificate-api'
+alias akc='cd ~/Projects/security/account-keycloak'
+alias sts='cd ~/Projects/security/edge-authentication-security-token-service'
+
+## Personal
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
 # generate identifier (random 128 bit, base58-encoded)
 genid() {
-  od -N 16 -t uL -An /dev/urandom | tr -d " " | base58 -e bitcoin
+  nanoid -a 13456789abcedfghijkmnopqrstuw -s 26
 }
 
 # Maven in Docker
