@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+overrides="$(jq -nc --arg user "$USER" \
+    '{apiVersion: "v1", metadata: {annotations: {"app.kubernetes.io/managed-by": $user, "consul.hashicorp.com/connect-inject": "false"}}}')"
+
+
+trap 'kubectl delete pod debug' EXIT
+kubectl run -it debug --image="${1:-ellerbrock/alpine-bash-curl-ssl}" --restart=Never --overrides="$overrides" -- "${2:-/bin/bash}"

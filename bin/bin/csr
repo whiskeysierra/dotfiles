@@ -8,15 +8,6 @@ openssl() {
   /usr/local/opt/openssl@1.1/bin/openssl "$@"
 }
 
-directory=$(mktemp -d)
-# shellcheck disable=SC2064
-trap "rm $directory" ERR EXIT
-
-cd "$directory"
-
-openssl ecparam -out private.key -name secp384r1 -genkey
-trap 'rm -f private.key' ERR EXIT
-
-openssl req -new -key private.key -nodes \
+openssl req -new -key <(openssl ecparam -name secp384r1 -genkey) -nodes \
   -addext "subjectAltName=URI:spiffe://gropyus.com/id/$1" \
-  -subj "/C=/ST=/L=/O=/CN=" 2> /dev/null
+  -subj "/CN=${2:-}" 2> /dev/null

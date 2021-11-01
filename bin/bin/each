@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+: "${1?"Usage: each <list-name> [command] ..."}"
+
+parents=$1
+shift
+
+for parent in $parents; do
+  if [ -d "$parent" ]; then
+    : # nothing to do here
+  elif type "$parent" 2> /dev/null ; then
+    parent=$($parent)
+  fi
+
+  # shellcheck disable=SC2086
+  find "$parent" -mindepth 1 -maxdepth 1 -type d \
+      -exec sh -c 'cd "{}"; >&2 echo ">>> \033[0;33m{}\033[0m"; "$@"' -- "$@" \;
+done
+

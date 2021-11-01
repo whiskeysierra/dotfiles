@@ -1,8 +1,10 @@
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
+  source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# shellcheck disable=SC1090
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+  # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+  # shellcheck disable=SC1090
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
@@ -57,7 +59,6 @@ ZSH_CUSTOM=~/.dotfiles/
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(\
     common-aliases \
-    each \
     extract \
     git-flow-avh \
     gpg-agent \
@@ -68,7 +69,8 @@ plugins=(\
     mvn \
     profiles \
     sudo \
-    terraform
+    terraform \
+    thefuck
 )
 
 # User configuration
@@ -134,78 +136,12 @@ SAVEHIST=300000
 # For a full list of active aliases, run `alias`.
 #
 
-project=(\
-    faux-pas \
-    http-toolbox \
-    jackson-datatype-money \
-    logbook \
-    opentracing-toolbox \
-    problem \
-    problem-spring-web \
-    riptide \
-    switchboard
-)
-
-personal=(\
-    compass \
-    compass-client \
-    http-toolbox \
-    switchboard
-)
-
-arch=(\
-    base-image \
-    composite-telemetry \
-    composite-testing \
-    consul-ingress \
-    consul-server \
-    decision-records \
-    deployment-agents \
-    id \
-    lets-encrypt \
-    pipelines \
-    tiles
-)
-
-docs() {
-  cd ~/Projects/architecture/tech.gropyus.com || exit 1
-  bin/run repositories
-}
-
-docs=()
-for project in $(docs); do
-  docs+=("$project")
-done
-
-work() {
-  cd ~/Projects || exit 1
-  find architecture bos infrastructure security \
-      -mindepth 1 -maxdepth 1 -type d
-}
-
-work=()
-for project in $(work); do
-  work+=("$project")
-done
-
-security() {
-  cd ~/Projects/security || exit 1
-  find . -mindepth 1 -maxdepth 1 -type d
-}
-
-security=()
-for project in $(security); do
-  security+=("$project")
-done
+work="architecture bos infrastructure security"
+export work
 
 alias .f='cd ~/.dotfiles'
 alias dl='cd ~/Downloads'
 alias p='cd ~/Projects'
-
-alias main='git checkout main'
-alias trunk='git checkout trunk'
-
-alias skip='echo "-D duplicate-finder.skip -D dependency-check.skip -D skipTests"'
 
 # OSS projects
 alias fp='cd ~/Projects/oss/faux-pas'
@@ -222,10 +158,10 @@ alias a='cd ~/Projects/architecture'
 alias aa='cd ~/Projects/architecture/architecture'
 alias tgc='cd ~/Projects/architecture/tech.gropyus.com'
 
-# TODO bd = building-device + prefix
-alias bas='cd ~/Projects/bos/attestation-api'
-alias bca='cd ~/Projects/bos/config-api'
-alias bua='cd ~/Projects/bos/update-api'
+alias bas='cd ~/Projects/bos/building-device-attestation-api'
+alias bca='cd ~/Projects/bos/building-device-config-api'
+alias bdca='cd ~/Projects/bos/building-device-dashboard-certificate-api'
+alias bua='cd ~/Projects/bos/building-device-update-api'
 
 alias i='cd ~/Projects/infrastructure'
 alias ii='cd ~/Projects/infrastructure/infrastructure'
@@ -240,17 +176,15 @@ alias sts='cd ~/Projects/security/edge-authentication-security-token-service'
 alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
-# generate identifier (random 128 bit, base58-encoded)
+alias rearrange-displays1='displayplacer "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
+alias rearrange-displays2='displayplacer "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
+
+
 genid() {
   nanoid -a 13456789abcedfghijkmnopqrstuw -s 26
 }
 
-# Maven in Docker
-mind() {
-  docker run -it --rm -v "$HOME/.m2":/root/.m2 -v "$(pwd):/${PWD##*/}" -w "/${PWD##*/}" openjdk:8 ./mvnw "$@"
-}
-
-compctl -K listMavenCompletions mind
+eval "$(docker-machine env default)"
 
 logs() {
   namespace=$1
@@ -270,12 +204,6 @@ main-logs() {
 
 envoy-logs() {
   logs "$@" --container envoy-sidecar
-}
-
-debug() {
-  overrides="$(jq -nc --arg user "$USER" \
-      '{apiVersion: "v1", metadata: {annotations: {"app.kubernetes.io/managed-by": $user, "consul.hashicorp.com/connect-inject": "false"}}}')"
-  kubectl run -it --rm debug --image=ubuntu:latest --restart=Never --overrides="$overrides" -- /bin/bash
 }
 
 secrets () {
