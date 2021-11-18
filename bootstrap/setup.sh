@@ -4,33 +4,19 @@ directory() {
     git rev-parse --show-toplevel
 }
 
-confirm() {
-  echo -n "$1 [y/N]? "
-  read -r choice <&3
-  case $choice in
-    y|Y) true;;
-    *) false;;
-  esac
-}
-
 list() {
   grep -vE '(^$)|^#' "$(directory)/bootstrap/$1.lst"
 }
 
 configure_taps() {
   list taps | while read -r tap; do
-    if confirm "Configure $tap"; then
-      brew tap "$tap"
-    fi
+    brew tap "$tap"
   done
 }
 
 install_packages() {
-  list packages | while read -r package; do
-    if confirm "Install $package"; then
-      brew install "$package"
-    fi
-  done
+  # shellcheck disable=SC2046
+  brew install $(list packages)
 }
 
 install_ohmyzsh() {
@@ -42,19 +28,17 @@ install_dotfiles() {
 }
 
 setup_gpg() {
-    chmod 0700 ~/.gnupg
-    chmod -R 0600 ~/.gnupg/*
+  chmod 0700 ~/.gnupg
+  chmod -R 0600 ~/.gnupg/*
 }
-
-exec 3<&0 # preserve standard input
 
 configure_taps
 install_packages
 
-confirm "Install oh-my-zsh" && install_ohmyzsh
-confirm "Stow dotfiles" && install_dotfiles
+install_ohmyzsh
+install_dotfiles
 
-confirm "Setup gpg" && setup_gpg
+setup_gpg
 
 # TODO ssh keys
 # TODO gnupg keys (https://gist.github.com/chrisroos/1205934)
