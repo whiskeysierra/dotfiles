@@ -17,10 +17,6 @@ list() {
   grep -vE '(^$)|^#' "$(directory)/bootstrap/$1.lst"
 }
 
-install_brew() {
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
-
 configure_taps() {
   list taps | while read -r tap; do
     if confirm "Configure $tap"; then
@@ -51,8 +47,6 @@ setup_gpg() {
 }
 
 exec 3<&0 # preserve standard input
-
-confirm "Install brew" && install_brew
 
 configure_taps
 install_packages

@@ -62,10 +62,12 @@ plugins=(\
     extract \
     git-flow-avh \
     gpg-agent \
+    gradle \
     history \
     httpie \
     jenv \
     kubectl \
+    minikube \
     mvn \
     profiles \
     sudo \
@@ -80,8 +82,15 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/L
 # https://dev.gnupg.org/T5415
 export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH"
 
-NPM_PACKAGES="${HOME}/.npm-packages"
+# Android
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
+# Kubernetes
+export PATH="${PATH}:${HOME}/.krew/bin"
+
+# Node
+NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
@@ -124,11 +133,10 @@ export VISUAL='vi'
 HISTSIZE=100000
 SAVEHIST=300000
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# SSH
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# Docker
+eval "$(minikube docker-env)"
+DOCKER_HOST_IP=$(minikube ip)
+export DOCKER_HOST_IP
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -136,7 +144,7 @@ SAVEHIST=300000
 # For a full list of active aliases, run `alias`.
 #
 
-work="architecture bos infrastructure security"
+work="architecture asm bos conf dt infrastructure isi mes network plm security"
 export work
 
 alias .f='cd ~/.dotfiles'
@@ -179,12 +187,9 @@ alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s
 alias rearrange-displays1='displayplacer "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
 alias rearrange-displays2='displayplacer "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
 
-
 genid() {
   nanoid -a 13456789abcedfghijkmnopqrstuw -s 26
 }
-
-eval "$(docker-machine env default)"
 
 logs() {
   namespace=$1
