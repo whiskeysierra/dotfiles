@@ -79,6 +79,9 @@ plugins=(\
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/Library/Python/3.9/bin:$HOME/bin
 
+# Brew on Apple M1
+export PATH=/opt/homebrew/bin:$PATH
+
 # https://dev.gnupg.org/T5415
 export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH"
 
