@@ -6,10 +6,11 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 default=$(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5)
 
 if [ "$branch" == "$default" ]; then
-  exit 0
+  git pull
+else
+  git checkout "$default"
+  git pull
+  git branch -d "$branch"
 fi
 
-git checkout "$default"
-git pull
-git branch -d "$branch"
 git remote prune origin

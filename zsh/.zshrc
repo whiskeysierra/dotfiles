@@ -67,7 +67,6 @@ plugins=(\
     httpie \
     jenv \
     kubectl \
-    minikube \
     mvn \
     profiles \
     sudo \
@@ -136,11 +135,6 @@ export VISUAL='vi'
 HISTSIZE=100000
 SAVEHIST=300000
 
-# Docker
-eval "$(minikube docker-env)"
-DOCKER_HOST_IP=$(minikube ip)
-export DOCKER_HOST_IP
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -169,6 +163,8 @@ alias a='cd ~/Projects/architecture'
 alias aa='cd ~/Projects/architecture/architecture'
 alias tgc='cd ~/Projects/architecture/tech.gropyus.com'
 
+alias aca='cd ~/Projects/bos/account-certificate-api'
+alias akc='cd ~/Projects/bos/account-keycloak'
 alias bas='cd ~/Projects/bos/building-device-attestation-api'
 alias bca='cd ~/Projects/bos/building-device-config-api'
 alias bdca='cd ~/Projects/bos/building-device-dashboard-certificate-api'
@@ -178,13 +174,10 @@ alias i='cd ~/Projects/infrastructure'
 alias ii='cd ~/Projects/infrastructure/infrastructure'
 alias st='cd ~/Projects/infrastructure/service-templates'
 
-
-alias aca='cd ~/Projects/security/account-certificate-api'
-alias akc='cd ~/Projects/security/account-keycloak'
 alias sts='cd ~/Projects/security/edge-authentication-security-token-service'
 
 ## Personal
-alias dla='youtube-dl --verbose --extract-audio --format best --no-cache-dir --output "%(title)s.%(ext)s"'
+alias dla='youtube-dl --verbose --format 140 --no-cache-dir --output "%(title)s.%(ext)s"'
 alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
 alias rearrange-displays1='displayplacer "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
