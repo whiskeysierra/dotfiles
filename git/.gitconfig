@@ -15,36 +15,38 @@
     branch = auto
     diff = auto
     grep = auto
+    interactive = auto
     status = auto
     ui = auto
-    interactive = auto
 [color "grep"]
     filename = magenta
-    match    = red bold
     linenumber = green
+    match    = red bold
     separator  = cyan
+[commit]
+    gpgsign = true
 [core]
     ignorecase = false
-    trustctime = false
     pager = less -r
+    trustctime = false
 [credential]
     helper =
     helper = /usr/local/share/gcm-core/git-credential-manager-core
 [credential "https://dev.azure.com"]
     useHttpPath = true
- [commit]
-    gpgsign = true
 [diff "sops"]
     textconv = "sops -d"
 [filter "lfs"]
     clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+    smudge = git-lfs smudge -- %f
+[http]
+	version = HTTP/1.1
 [init]
+    defaultBranch = trunk
     # can't be a symlink
     templateDir = ~/.dotfiles/git-template
-    defaultBranch = trunk
 [merge]
     log = true
     summary = true
@@ -52,10 +54,11 @@
     branch = false
 [push]
     default = simple
+    autoSetupRemote = true
 [remote "origin"]
     push = HEAD
     # fetch = +refs/heads/*:refs/remotes/origin/*
 [user]
     name = Willi Schönborn
-    useConfigOnly = true
     signingkey = 0x5933861F7197F8C7
+    useConfigOnly = true
