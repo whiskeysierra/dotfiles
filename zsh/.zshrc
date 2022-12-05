@@ -60,15 +60,16 @@ ZSH_CUSTOM=~/.dotfiles/
 plugins=(\
     common-aliases \
     extract \
+    gitfast \
     git-flow-avh \
     gpg-agent \
     gradle \
     history \
     httpie \
-    jenv \
     kubectl \
     mvn \
     profiles \
+    sdk \
     sudo \
     terraform \
     thefuck
@@ -94,6 +95,10 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 # Node
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
+
+# SDKMAN
+SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
