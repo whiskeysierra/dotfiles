@@ -89,6 +89,10 @@ export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH"
 export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
+# Docker
+# added to the end, because we don't want the old kubectl from docker
+export PATH="$PATH:$HOME/.docker/bin"
+
 # Kubernetes
 export PATH="${PATH}:${HOME}/.krew/bin"
 
@@ -97,8 +101,7 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 
 # SDKMAN
-SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
@@ -182,8 +185,8 @@ alias st='cd ~/Projects/infrastructure/service-templates'
 alias sts='cd ~/Projects/security/edge-authentication-security-token-service'
 
 ## Personal
-alias dla='youtube-dl --verbose --format 140 --no-cache-dir --output "%(title)s.%(ext)s"'
-alias dlv='youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
+alias dla='python3 /usr/local/bin/youtube-dl --verbose --format 140 --no-cache-dir --output "%(title)s.%(ext)s"'
+alias dlv='python3 /usr/local/bin/youtube-dl --verbose --format best --no-cache-dir --output "%(title)s.%(ext)s"'
 
 alias rearrange-displays1='displayplacer "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
 alias rearrange-displays2='displayplacer "id:D6F36547-895B-A709-1CB1-B3048CBF52CB res:2560x1440 hz:59 color_depth:8 scaling:off origin:(0,0) degree:0" "id:CE62D897-B052-E9AB-8182-C794F1AD4729 res:1792x1120 hz:59 color_depth:8 scaling:on origin:(-2560,320) degree:0" "id:4E7A3C33-3042-E730-215F-F57C677FCE1B res:2560x1440 hz:59 color_depth:8 scaling:off origin:(2560,0) degree:0"'
