@@ -1,4 +1,39 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
-# az repos ref list -p bos -r building-device-attestation-api --filter heads/dependabot | jq -r '.[].name' | sed 's/refs\///' | while read -r branch; do az repos ref delete -p bos -r building-device-attestation-api --name $branch; done
-# az repos pr list --repository building-device-attestation-api --creator "bos Build Service (gropyus)" | jq -r '.[].codeReviewId' | while read -r id; do az repos pr update --id $id --status abandoned; done
+set -euo pipefail
+
+abandon-pull-requests() {
+  pull-requests | while read -r id; do
+    abandon-pull-request "$id"
+  done
+}
+
+pull-requests() {
+  az repos pr list -p "$project" -r "$repository" --creator "$project Build Service (gropyus)" --top 100 | jq -r '.[].codeReviewId'
+}
+
+abandon-pull-request() {
+  az repos pr update --id "$1" --status abandoned;
+}
+
+delete-branches() {
+  branches | while read -r branch; do
+    delete-branch "$branch"
+  done
+}
+
+branches() {
+  az repos ref list -p "$project" -r "$repository" --filter heads/dependabot | jq -r '.[].name' | sed 's/refs\///'
+}
+
+delete-branch() {
+  az repos ref delete -p "$project" -r "$repository" --name "$1";
+}
+
+: "${2?"Usage: $0 <project> <repository>"}"
+
+project=$1
+repository=$2
+
+abandon-pull-requests
+delete-branches
