@@ -1,5 +1,12 @@
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
-  source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+  if [ -e /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]; then
+    source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+  fi 
+
+  if [ -e /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme ]; then
+    source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+  fi 
 
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
   # shellcheck disable=SC1090
