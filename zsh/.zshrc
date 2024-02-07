@@ -1,11 +1,13 @@
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/bin
+
+# Brew on M1
+export PATH=/opt/homebrew/bin:$PATH
+
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 
-  if [ -e /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme ]; then
-    source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
-  fi 
-
-  if [ -e /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme ]; then
-    source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+  if [ -e "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme" ]; then
+    source "$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
   fi 
 
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -84,16 +86,16 @@ plugins=(\
 
 # User configuration
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/Library/Python/3.9/bin:$HOME/bin
-
-# Brew on Apple M1
-export PATH=/opt/homebrew/bin:$PATH
+export CA_CERTIFICATES_PATH="$(brew --prefix)/etc/ca-certificates/cert.pem"
+export REQUESTS_CA_BUNDLE="$CA_CERTIFICATES_PATH"      # for Python
+export SSL_CERT_FILE="$CA_CERTIFICATES_PATH"           # for OpenSSL
+export CURL_CA_BUNDLE="$CA_CERTIFICATES_PATH"          # for curl
 
 # https://dev.gnupg.org/T5415
-export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH"
+export PATH="$(brew --prefix)/opt/gnupg@2.2/bin:$PATH"
 
 # Android
-export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+export ANDROID_SDK_ROOT="$(brew --prefix)/share/android-sdk"
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools
 
 # Docker
@@ -120,8 +122,8 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -U +X bashcompinit && bashcompinit
 
-if [ -e /usr/local/etc/bash_completion.d/az ]; then
-    source /usr/local/etc/bash_completion.d/az
+if [ -e "$(brew --prefix)/etc/bash_completion.d/az" ]; then
+    source "$(brew --prefix)/etc/bash_completion.d/az"
 fi
 
 if [ -d ~/go ]; then
@@ -130,8 +132,8 @@ if [ -d ~/go ]; then
     export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 fi
 
-if [ -d /usr/local/opt/ruby ]; then
-    export PATH="/usr/local/opt/ruby/bin:$PATH"
+if [ -d $(brew --prefix ruby) ]; then
+    export PATH="$(brew --prefix ruby)/bin:$PATH"
 fi
 
 if [ -d $HOME/.gem/ruby/2.7.0 ]; then
@@ -230,13 +232,20 @@ secrets () {
 }
 
 setup-tf() {
-  args="-var-file $HOME/Projects/infrastructure/GLOBAL.tfvars.json"
+  args="-var-file $HOME/Projects/infrastructure/infrastructure/GLOBAL.tfvars.json -var-file $HOME/Projects/infrastructure/infrastructure/budgets.tfvars.json"
   export TF_CLI_ARGS_apply="$args"
   export TF_CLI_ARGS_destroy="$args"
   export TF_CLI_ARGS_import="$args"
   export TF_CLI_ARGS_plan="$args"
   export TF_CLI_ARGS_refresh="$args"
+
+  export API_DATA_IS_SENSITIVE=true
+
+  export TF_VAR_opsgenie_api_key=fake
+  export TF_VAR_cortex_xdr_agent_version=
+  export TF_VAR_cortex_xdr_distribution_id=
+  export TF_VAR_cortex_xdr_docker_config_password=
+  export TF_VAR_cortex_xdr_docker_config_auth=
 }
 
-export VAGRANT_EXPERIMENTAL=disks
-
+source "$HOME/.cargo/env"
