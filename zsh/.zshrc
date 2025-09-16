@@ -3,6 +3,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$HOME/b
 
 # Brew on M1
 export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
 
 if [ -z "$INTELLIJ_ENVIRONMENT_READER" ]; then
 
@@ -80,8 +81,7 @@ plugins=(\
     profiles \
     sdk \
     sudo \
-    terraform \
-    thefuck
+    terraform
 )
 
 # User configuration
@@ -109,12 +109,17 @@ export PATH="${PATH}:${HOME}/.krew/bin"
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+
 # SDKMAN
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# Postgres
+export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
 
 export XDG_CONFIG_HOME=$HOME/.config
 
@@ -249,3 +254,4 @@ setup-tf() {
 }
 
 source "$HOME/.cargo/env"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
