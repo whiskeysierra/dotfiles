@@ -16,11 +16,11 @@ configure_taps() {
 
 install_packages() {
   # shellcheck disable=SC2046
-  brew install $(list packages)
+  ZSH= brew install $(list packages)
 }
 
 install_ohmyzsh() {
-  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ZSH= sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 install_dotfiles() {
